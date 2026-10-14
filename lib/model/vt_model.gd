@@ -128,6 +128,12 @@ func save_model_settings(settings: Dictionary):
 			{}
 		)
 	})
+	# Open editors temporarily own the graphs instead of the model's Actions node.
+	# Include their live state in this snapshot, before teardown reparents them.
+	if is_inside_tree():
+		for editor in get_tree().get_nodes_in_group("persist:model"):
+			if editor.get("active_model") == self and editor.has_method("save_settings"):
+				editor.save_settings(settings)
 
 ## load open-vt specific settings
 func _load_settings():

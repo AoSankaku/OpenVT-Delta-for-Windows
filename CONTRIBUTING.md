@@ -1,30 +1,26 @@
-# Godot Standards
+# Contributing to OpenVT Delta for Windows
+
+This is an independent Windows fork of OpenVT by erodozer. These guidelines apply
+to the Delta fork. Consult upstream's own contribution policy before submitting
+changes to the original OpenVT project.
 
 ## GDScript internal, Rust external
 
-OpenVT attempts to use as much out of the box functionality of Godot as possible with low overhead and dependencies, as it's already a rather feature rich runtime.
-As such, GDScript is the primary language of the codebase of OpenVT itself.
+OpenVT Delta for Windows uses Godot's built-in functionality with few dependencies.
+GDScript is the primary language for application behavior. Native integrations
+use Godot-Rust; general-purpose integrations belong in separate dependencies.
+The `thirdparty` directory pins those dependencies, and `addons` holds the built files.
 
-When integrating with native libraries, Godot-Rust is the preferred tool of choice.  Such integrations should be general purpose enough to be developed outside of OpenVT and depended on.  The /thirdparty directory holds git submodules to various external dependencies that are built and loaded into the /addons folder of the project.
+## Engine and verification
 
-## Minimum engine version, Engine patching
+The Windows build uses the pinned Godot 4.7.1 editor and export template with
+Ayagami's blending patch. Build with the repository's PowerShell scripts and
+verify the affected behavior before contributing. Keep tests isolated from real
+user profiles and models; use synthetic tracking for tests that do not need a camera.
 
-The codebase will generally target the latest stable 4.x series Godot runtimes to edit the project.  Due to necessary patches against Godot for rendering models, at least version 4.7.1 is required.
+## AI-assisted contributions
 
-Unless absolutely necessary, such as with the Ayagami patches, the project should strive not to rely on custom engine builds.  This lowers the maintenance complexity and lowers the overhead for making contributions.
-
-# AI models and agents
-
-Please do not use AI agents to contribute to this project, neither directly or indirectly. Examples of forbidden conduct include using an AI agent to do any of the following:
-
-- Author any code related to this project
-- Analyze this repository's code
-- Review code intended for contribution
-
-Any attempts to contribute that ignore or circumvent these rules will result in immediate rejection, and the user barred from further contributions.
-
-# Do it for your Oshi
-
-OpenVT is a project born out of the love of vtubers and respect for its human community of hard working creators.  Building software for their sake using AI agents spits in the face of those same creators.  To give them ethically built tools that empower their artistry is the highest priority of OpenVT.
-
-There's no pressure to implement anything as fast as possible, it's not a race.  If you wish to contribute, take the time to learn and build with your own imagination and skills, even if for no other sake than to make your oshi proud.
+AI-assisted contributions are accepted in this fork. Contributors remain
+responsible for correctness, license compliance, and reviewing generated changes.
+Preserve upstream copyright notices, dependency licenses, and required sources.
+Do not imply that the original OpenVT project endorses this fork or its changes.

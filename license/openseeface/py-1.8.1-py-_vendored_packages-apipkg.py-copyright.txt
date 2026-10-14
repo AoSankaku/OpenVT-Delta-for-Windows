@@ -1,0 +1,7 @@
+"""
+apipkg: control the exported namespace of a python package.
+
+see http://pypi.python.org/pypi/apipkg
+
+(c) holger krekel, 2009 - MIT license
+"""

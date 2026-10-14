@@ -97,6 +97,8 @@ func serialize():
 		output["a"] = Serializers.Vec2Serializer.to_json(a)
 	if not b_is_bound:
 		output["b"] = Serializers.Vec2Serializer.to_json(b)
+	output["a_clamp"] = a_clamp
+	output["b_clamp"] = b_clamp
 	
 	return output
 
@@ -105,15 +107,19 @@ func deserialize(data):
 		a = Serializers.Vec2Serializer.from_json(data.a, Vector2.DOWN)
 	if data.get("b", null):
 		b = Serializers.Vec2Serializer.from_json(data.b, Vector2.DOWN)
+	if data.has("a_clamp"):
+		a_clamp = bool(data["a_clamp"])
+	if data.has("b_clamp"):
+		b_clamp = bool(data["b_clamp"])
 
 func get_value(_slot):
-	var input = clamp(input_value, a.x, a.y) if a_clamp else input_value
+	var input = clamp(input_value, minf(a.x, a.y), maxf(a.x, a.y)) if a_clamp else input_value
 	var mapped = remap(
 		input,
 		a.x, a.y,
 		b.x, b.y
 	)
-	var output = clamp(mapped, b.x, b.y) if b_clamp else mapped
+	var output = clamp(mapped, minf(b.x, b.y), maxf(b.x, b.y)) if b_clamp else mapped
 	return output
 	
 func update_value(slot, value):

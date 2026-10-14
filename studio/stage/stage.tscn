@@ -88,6 +88,4 @@ size = 0.05
 [node name="ModelLayer" type="CanvasLayer" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=800326305]
 unique_name_in_owner = true
 
-[node name="VirtualCamera" type="VirtualCamera" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=341780835 groups=["output:v4l2"]]
-
 [connection signal="child_order_changed" from="CanvasLayer/SubViewportContainer/SubViewport/ModelLayer" to="." method="_on_model_layer_child_order_changed"]

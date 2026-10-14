@@ -201,12 +201,27 @@ func get_animation_player() -> AnimationPlayer:
 func get_expression_controller() -> AyagamiExpressionMutator:
 	return model.get_node("ExpressionController")
 
+## Read optional VTS settings, normalizing absent sections.
+func _read_vts_settings() -> Dictionary:
+	var data: Dictionary = {}
+	if FileAccess.file_exists(modelmeta.studio_parameters):
+		data = Files.read_json(modelmeta.studio_parameters)
+	# VTS metadata is optional; partial sidecars can contain null sections.
+	for section in ["FileReferences", "ArtMeshDetails", "ModelPositionMovement"]:
+		if not data.get(section) is Dictionary:
+			data[section] = {}
+	return data
+
 ## save bidirectional vts compatible settings
 func _save_to_vts():
 	if modelmeta.studio_parameters.is_empty():
 		return
 	
-	var vtube_data = Files.read_json(modelmeta.studio_parameters)
+	var vtube_data = _read_vts_settings()
+	if not vtube_data.get("Name") is String or vtube_data["Name"].is_empty():
+		vtube_data["Name"] = modelmeta.name
+	if not vtube_data.get("ModelID") is String or vtube_data["ModelID"].is_empty():
+		vtube_data["ModelID"] = modelmeta.id
 	# vtube_data["ParameterSettings"] = studio_parameters.map(func (x): return x.serialize())
 	vtube_data["ArtMeshDetails"]["ArtMeshesExcludedFromPinning"] = get_meshes().reduce(
 		func (acc, mesh):
@@ -243,7 +258,7 @@ func _load_from_vts():
 	if modelmeta.studio_parameters.is_empty():
 		return
 	
-	var vtube_data = Files.read_json(modelmeta.studio_parameters)
+	var vtube_data = _read_vts_settings()
 	
 	var idle_animation = vtube_data.get("FileReferences", {}).get("IdleAnimation")
 	if idle_animation:
@@ -281,7 +296,7 @@ func _load_from_vts():
 		if mesh.name in tint:
 			var colors = tint[mesh.name]
 			settings.multiply_color = colors.multiply
-			settings.screen_color = colors.creen
+			settings.screen_color = colors.screen
 		
 func save_model_settings(settings: Dictionary):
 	super.save_model_settings(settings)

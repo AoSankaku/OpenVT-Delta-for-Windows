@@ -1,0 +1,1751 @@
+{
+  "schemaVersion": 1,
+  "target": "x86_64-pc-windows-msvc",
+  "acquisition": "Every registry archive is verified against the SHA-256 in Cargo.lock. Cached .crate files are preferred; missing files are fetched from static.crates.io and verified before use.",
+  "lockFiles": [
+    {
+      "component": "ayagami-gd",
+      "path": "thirdparty/ayagami/Cargo.lock",
+      "sha256": "0b6567ad5cd3ecbe7e7819cae821673af46edd59b4d48c21bc0f498af7e20054"
+    },
+    {
+      "component": "gd-keylogger",
+      "path": "thirdparty/godot-keylogger/Cargo.lock",
+      "sha256": "d222dec662b9510f24582ca501074f79ccb1d3f9f769b9c686c3d820a36585b2"
+    }
+  ],
+  "packages": [
+    {
+      "name": "aho-corasick",
+      "version": "1.1.5",
+      "license": "Unlicense OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "c982642fa9e8606056828ee9a8505737230110bb1099153c79efe865c59d12ba",
+      "sourceArchive": "cargo-crates/aho-corasick-1.1.5-c982642fa9e8.crate",
+      "sourceArchiveSha256": "c982642fa9e8606056828ee9a8505737230110bb1099153c79efe865c59d12ba",
+      "noticeFiles": [
+        "license/native-runtime/crates/aho-corasick-1.1.5/COPYING",
+        "license/native-runtime/crates/aho-corasick-1.1.5/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "anstream",
+      "version": "1.0.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "824a212faf96e9acacdbd09febd34438f8f711fb84e09a8916013cd7815ca28d",
+      "sourceArchive": "cargo-crates/anstream-1.0.0-824a212faf96.crate",
+      "sourceArchiveSha256": "824a212faf96e9acacdbd09febd34438f8f711fb84e09a8916013cd7815ca28d",
+      "noticeFiles": [
+        "license/native-runtime/crates/anstream-1.0.0/LICENSE-APACHE",
+        "license/native-runtime/crates/anstream-1.0.0/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "anstyle",
+      "version": "1.0.14",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "940b3a0ca603d1eade50a4846a2afffd5ef57a9feac2c0e2ec2e14f9ead76000",
+      "sourceArchive": "cargo-crates/anstyle-1.0.14-940b3a0ca603.crate",
+      "sourceArchiveSha256": "940b3a0ca603d1eade50a4846a2afffd5ef57a9feac2c0e2ec2e14f9ead76000",
+      "noticeFiles": [
+        "license/native-runtime/crates/anstyle-1.0.14/LICENSE-APACHE",
+        "license/native-runtime/crates/anstyle-1.0.14/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "anstyle-parse",
+      "version": "1.0.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "52ce7f38b242319f7cabaa6813055467063ecdc9d355bbb4ce0c68908cd8130e",
+      "sourceArchive": "cargo-crates/anstyle-parse-1.0.0-52ce7f38b242.crate",
+      "sourceArchiveSha256": "52ce7f38b242319f7cabaa6813055467063ecdc9d355bbb4ce0c68908cd8130e",
+      "noticeFiles": [
+        "license/native-runtime/crates/anstyle-parse-1.0.0/LICENSE-APACHE",
+        "license/native-runtime/crates/anstyle-parse-1.0.0/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "anstyle-query",
+      "version": "1.1.5",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "40c48f72fd53cd289104fc64099abca73db4166ad86ea0b4341abe65af83dadc",
+      "sourceArchive": "cargo-crates/anstyle-query-1.1.5-40c48f72fd53.crate",
+      "sourceArchiveSha256": "40c48f72fd53cd289104fc64099abca73db4166ad86ea0b4341abe65af83dadc",
+      "noticeFiles": [
+        "license/native-runtime/crates/anstyle-query-1.1.5/LICENSE-APACHE",
+        "license/native-runtime/crates/anstyle-query-1.1.5/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "anstyle-wincon",
+      "version": "3.0.11",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "291e6a250ff86cd4a820112fb8898808a366d8f9f58ce16d1f538353ad55747d",
+      "sourceArchive": "cargo-crates/anstyle-wincon-3.0.11-291e6a250ff8.crate",
+      "sourceArchiveSha256": "291e6a250ff86cd4a820112fb8898808a366d8f9f58ce16d1f538353ad55747d",
+      "noticeFiles": [
+        "license/native-runtime/crates/anstyle-wincon-3.0.11/LICENSE-APACHE",
+        "license/native-runtime/crates/anstyle-wincon-3.0.11/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "ayagami",
+      "version": "0.1.0",
+      "license": null,
+      "source": "git+https://github.com/AyagamiDev/ayagami.git?branch=main#0d1d7aa3efe57b1b363b72e672e353c52a9c15d6",
+      "cargoLockChecksum": null,
+      "sourceArchive": "git-ayagami-0.1.0-0d1d7aa3.zip",
+      "sourceArchiveSha256": "c9ba49bee6ae00d7e6e4aaa5ba084fb55907ff4d2e963597c42819f8dfa7ad41",
+      "noticeFiles": [
+        "license/native-runtime/git/ayagami-0.1.0/COPYRIGHT",
+        "license/native-runtime/git/ayagami-0.1.0/LICENSE-APACHE",
+        "license/native-runtime/git/ayagami-0.1.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "bitflags",
+      "version": "1.3.2",
+      "license": "MIT/Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a",
+      "sourceArchive": "cargo-crates/bitflags-1.3.2-bef38d45163c.crate",
+      "sourceArchiveSha256": "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a",
+      "noticeFiles": [
+        "license/native-runtime/crates/bitflags-1.3.2/LICENSE-APACHE",
+        "license/native-runtime/crates/bitflags-1.3.2/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "bitflags",
+      "version": "2.8.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "8f68f53c83ab957f72c32642f3868eec03eb974d1fb82e453128456482613d36",
+      "sourceArchive": "cargo-crates/bitflags-2.8.0-8f68f53c83ab.crate",
+      "sourceArchiveSha256": "8f68f53c83ab957f72c32642f3868eec03eb974d1fb82e453128456482613d36",
+      "noticeFiles": [
+        "license/native-runtime/crates/bitflags-2.8.0/LICENSE-APACHE",
+        "license/native-runtime/crates/bitflags-2.8.0/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "bitvec",
+      "version": "1.0.1",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "1bc2832c24239b0141d5674bb9174f9d68a8b5b3f2753311927c172ca46f7e9c",
+      "sourceArchive": "cargo-crates/bitvec-1.0.1-1bc2832c2423.crate",
+      "sourceArchiveSha256": "1bc2832c24239b0141d5674bb9174f9d68a8b5b3f2753311927c172ca46f7e9c",
+      "noticeFiles": [
+        "license/native-runtime/crates/bitvec-1.0.1/LICENSE.txt"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "byteorder",
+      "version": "1.5.0",
+      "license": "Unlicense OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b",
+      "sourceArchive": "cargo-crates/byteorder-1.5.0-1fd0f2584146.crate",
+      "sourceArchiveSha256": "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b",
+      "noticeFiles": [
+        "license/native-runtime/crates/byteorder-1.5.0/COPYING",
+        "license/native-runtime/crates/byteorder-1.5.0/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "cfg_aliases",
+      "version": "0.2.2",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "f079e83a288787bcd14a6aea84cee5c87a67c5a3e660c30f557a3d24761b3527",
+      "sourceArchive": "cargo-crates/cfg_aliases-0.2.2-f079e83a2887.crate",
+      "sourceArchiveSha256": "f079e83a288787bcd14a6aea84cee5c87a67c5a3e660c30f557a3d24761b3527",
+      "noticeFiles": [
+        "license/native-runtime/crates/cfg_aliases-0.2.2/LICENSE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "cfg-if",
+      "version": "1.0.0",
+      "license": "MIT/Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd",
+      "sourceArchive": "cargo-crates/cfg-if-1.0.0-baf1de433976.crate",
+      "sourceArchiveSha256": "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd",
+      "noticeFiles": [
+        "license/native-runtime/crates/cfg-if-1.0.0/LICENSE-APACHE",
+        "license/native-runtime/crates/cfg-if-1.0.0/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "colorchoice",
+      "version": "1.0.5",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "1d07550c9036bf2ae0c684c4297d503f838287c83c53686d05370d0e139ae570",
+      "sourceArchive": "cargo-crates/colorchoice-1.0.5-1d07550c9036.crate",
+      "sourceArchiveSha256": "1d07550c9036bf2ae0c684c4297d503f838287c83c53686d05370d0e139ae570",
+      "noticeFiles": [
+        "license/native-runtime/crates/colorchoice-1.0.5/LICENSE-APACHE",
+        "license/native-runtime/crates/colorchoice-1.0.5/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "convert_case",
+      "version": "0.10.0",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "633458d4ef8c78b72454de2d54fd6ab2e60f9e02be22f3c6104cdc8a4e0fceb9",
+      "sourceArchive": "cargo-crates/convert_case-0.10.0-633458d4ef8c.crate",
+      "sourceArchiveSha256": "633458d4ef8c78b72454de2d54fd6ab2e60f9e02be22f3c6104cdc8a4e0fceb9",
+      "noticeFiles": [
+        "license/native-runtime/crates/convert_case-0.10.0/LICENSE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "crossbeam-deque",
+      "version": "0.8.8",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "622f3fc73690be383c7214310406f28a90e6edeadc3cea882f9d71e495b9711a",
+      "sourceArchive": "cargo-crates/crossbeam-deque-0.8.8-622f3fc73690.crate",
+      "sourceArchiveSha256": "622f3fc73690be383c7214310406f28a90e6edeadc3cea882f9d71e495b9711a",
+      "noticeFiles": [
+        "license/native-runtime/crates/crossbeam-deque-0.8.8/LICENSE-APACHE",
+        "license/native-runtime/crates/crossbeam-deque-0.8.8/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "crossbeam-epoch",
+      "version": "0.9.21",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "dc74980687109a3b14c72fd458107bf0baa1da1a1a805e178d15501ba9b86d9d",
+      "sourceArchive": "cargo-crates/crossbeam-epoch-0.9.21-dc7498068710.crate",
+      "sourceArchiveSha256": "dc74980687109a3b14c72fd458107bf0baa1da1a1a805e178d15501ba9b86d9d",
+      "noticeFiles": [
+        "license/native-runtime/crates/crossbeam-epoch-0.9.21/LICENSE-APACHE",
+        "license/native-runtime/crates/crossbeam-epoch-0.9.21/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "crossbeam-utils",
+      "version": "0.8.23",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "a31eee39dddec8330830986fcd7625edb5a24ec90ea038215273bbc3adb08ac6",
+      "sourceArchive": "cargo-crates/crossbeam-utils-0.8.23-a31eee39ddde.crate",
+      "sourceArchiveSha256": "a31eee39dddec8330830986fcd7625edb5a24ec90ea038215273bbc3adb08ac6",
+      "noticeFiles": [
+        "license/native-runtime/crates/crossbeam-utils-0.8.23/LICENSE-APACHE",
+        "license/native-runtime/crates/crossbeam-utils-0.8.23/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "defmt",
+      "version": "1.1.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "e2953bfe4f93bbd20cc71198842756f77d161884c99ebbabc41d80231ded88d1",
+      "sourceArchive": "cargo-crates/defmt-1.1.1-e2953bfe4f93.crate",
+      "sourceArchiveSha256": "e2953bfe4f93bbd20cc71198842756f77d161884c99ebbabc41d80231ded88d1",
+      "noticeFiles": [
+        "license/native-runtime/crates/defmt-1.1.1/LICENSE-APACHE",
+        "license/native-runtime/crates/defmt-1.1.1/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "defmt-macros",
+      "version": "1.1.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "bad9c72e7ca2137e0dc3813245a0d282fd6daad32fd800af018306a9169b5fe8",
+      "sourceArchive": "cargo-crates/defmt-macros-1.1.1-bad9c72e7ca2.crate",
+      "sourceArchiveSha256": "bad9c72e7ca2137e0dc3813245a0d282fd6daad32fd800af018306a9169b5fe8",
+      "noticeFiles": [
+        "license/native-runtime/crates/defmt-macros-1.1.1/LICENSE-APACHE",
+        "license/native-runtime/crates/defmt-macros-1.1.1/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "defmt-parser",
+      "version": "1.0.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "10d60334b3b2e7c9d91ef8150abfb6fa4c1c39ebbcf4a81c2e346aad939fee3e",
+      "sourceArchive": "cargo-crates/defmt-parser-1.0.0-10d60334b3b2.crate",
+      "sourceArchiveSha256": "10d60334b3b2e7c9d91ef8150abfb6fa4c1c39ebbcf4a81c2e346aad939fee3e",
+      "noticeFiles": [
+        "license/native-runtime/crates/defmt-parser-1.0.0/LICENSE-MIT",
+        "license/native-runtime/crates/defmt-parser-1.0.0/LICENSE-APACHE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "derive_more",
+      "version": "2.1.1",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "d751e9e49156b02b44f9c1815bcb94b984cdcc4396ecc32521c739452808b134",
+      "sourceArchive": "cargo-crates/derive_more-2.1.1-d751e9e49156.crate",
+      "sourceArchiveSha256": "d751e9e49156b02b44f9c1815bcb94b984cdcc4396ecc32521c739452808b134",
+      "noticeFiles": [
+        "license/native-runtime/crates/derive_more-2.1.1/LICENSE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "derive_more-impl",
+      "version": "2.1.1",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "799a97264921d8623a957f6c3b9011f3b5492f557bbb7a5a19b7fa6d06ba8dcb",
+      "sourceArchive": "cargo-crates/derive_more-impl-2.1.1-799a97264921.crate",
+      "sourceArchiveSha256": "799a97264921d8623a957f6c3b9011f3b5492f557bbb7a5a19b7fa6d06ba8dcb",
+      "noticeFiles": [
+        "license/native-runtime/crates/derive_more-impl-2.1.1/LICENSE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "either",
+      "version": "1.18.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "252afb9ae5eaa683babdc6a068b3f5726eb19e05070c731f9b2a23a7c3e8ed34",
+      "sourceArchive": "cargo-crates/either-1.18.0-252afb9ae5ea.crate",
+      "sourceArchiveSha256": "252afb9ae5eaa683babdc6a068b3f5726eb19e05070c731f9b2a23a7c3e8ed34",
+      "noticeFiles": [
+        "license/native-runtime/crates/either-1.18.0/LICENSE-APACHE",
+        "license/native-runtime/crates/either-1.18.0/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "env_filter",
+      "version": "2.0.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "900d271a03799a1ee8d1ca9b19893b48ca674a9284fefcfb85f05e74ed314217",
+      "sourceArchive": "cargo-crates/env_filter-2.0.0-900d271a0379.crate",
+      "sourceArchiveSha256": "900d271a03799a1ee8d1ca9b19893b48ca674a9284fefcfb85f05e74ed314217",
+      "noticeFiles": [
+        "license/native-runtime/crates/env_filter-2.0.0/LICENSE-APACHE",
+        "license/native-runtime/crates/env_filter-2.0.0/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "env_logger",
+      "version": "0.11.11",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "de671bd27a75a797dc9ae289ba1e77276e75e2026408aab65185384e2d5cd3f6",
+      "sourceArchive": "cargo-crates/env_logger-0.11.11-de671bd27a75.crate",
+      "sourceArchiveSha256": "de671bd27a75a797dc9ae289ba1e77276e75e2026408aab65185384e2d5cd3f6",
+      "noticeFiles": [
+        "license/native-runtime/crates/env_logger-0.11.11/LICENSE-APACHE",
+        "license/native-runtime/crates/env_logger-0.11.11/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "evdev",
+      "version": "0.13.2",
+      "license": "Apache-2.0 OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "25b686663ba7f08d92880ff6ba22170f1df4e83629341cba34cf82cd65ebea99",
+      "sourceArchive": "cargo-crates/evdev-0.13.2-25b686663ba7.crate",
+      "sourceArchiveSha256": "25b686663ba7f08d92880ff6ba22170f1df4e83629341cba34cf82cd65ebea99",
+      "noticeFiles": [
+        "license/native-runtime/crates/evdev-0.13.2/LICENSE-APACHE",
+        "license/native-runtime/crates/evdev-0.13.2/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "fastxfix",
+      "version": "1.0.2",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "0b35f19e90a8b84554cc41a12118a68aaa71babc7c6d28d10d38bad16d97bce7",
+      "sourceArchive": "cargo-crates/fastxfix-1.0.2-0b35f19e90a8.crate",
+      "sourceArchiveSha256": "0b35f19e90a8b84554cc41a12118a68aaa71babc7c6d28d10d38bad16d97bce7",
+      "noticeFiles": [
+        "license/native-runtime/crates/fastxfix-1.0.2/LICENSE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "funty",
+      "version": "2.0.0",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "e6d5a32815ae3f33302d95fdcb2ce17862f8c65363dcfd29360480ba1001fc9c",
+      "sourceArchive": "cargo-crates/funty-2.0.0-e6d5a32815ae.crate",
+      "sourceArchiveSha256": "e6d5a32815ae3f33302d95fdcb2ce17862f8c65363dcfd29360480ba1001fc9c",
+      "noticeFiles": [
+        "license/native-runtime/crates/funty-2.0.0/LICENSE.txt"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "gdextension-api",
+      "version": "0.5.1",
+      "license": "MPL-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "3489a9e7463353467db3cfe3eb12de31c9b6200e4f928bde4959bf5db5b31d2f",
+      "sourceArchive": "cargo-crates/gdextension-api-0.5.1-3489a9e74633.crate",
+      "sourceArchiveSha256": "3489a9e7463353467db3cfe3eb12de31c9b6200e4f928bde4959bf5db5b31d2f",
+      "noticeFiles": [
+        "license/native-runtime/crates/gdextension-api-0.5.1/source-notices/src_4.2_mod.rs.txt"
+      ],
+      "sourceNoticeSources": [
+        {
+          "noticePath": "license/native-runtime/crates/gdextension-api-0.5.1/source-notices/src_4.2_mod.rs.txt",
+          "sourceFile": "src/4.2/mod.rs",
+          "sourceFileSha256": "be5e2e80886f89ebd5b27fd7df2673e2693eb50f886d60274c58873cedd7cfa7"
+        }
+      ]
+    },
+    {
+      "name": "glam",
+      "version": "0.32.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "f70749695b063ecbf6b62949ccccde2e733ec3ecbbd71d467dca4e5c6c97cca0",
+      "sourceArchive": "cargo-crates/glam-0.32.1-f70749695b06.crate",
+      "sourceArchiveSha256": "f70749695b063ecbf6b62949ccccde2e733ec3ecbbd71d467dca4e5c6c97cca0",
+      "noticeFiles": [
+        "license/native-runtime/crates/glam-0.32.1/LICENSE-APACHE",
+        "license/native-runtime/crates/glam-0.32.1/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "glam",
+      "version": "0.33.7",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "e762b9b188634fc508d4ec54b62ea3d352c43fd431d18d05d46f559f217f4725",
+      "sourceArchive": "cargo-crates/glam-0.33.7-e762b9b18863.crate",
+      "sourceArchiveSha256": "e762b9b188634fc508d4ec54b62ea3d352c43fd431d18d05d46f559f217f4725",
+      "noticeFiles": [
+        "license/native-runtime/crates/glam-0.33.7/LICENSE-APACHE",
+        "license/native-runtime/crates/glam-0.33.7/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "glob",
+      "version": "0.3.4",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "e4eba85ea1d0a966a983acd07deee566e67395d2d96b6fb39e62b5a833f1eb0b",
+      "sourceArchive": "cargo-crates/glob-0.3.4-e4eba85ea1d0.crate",
+      "sourceArchiveSha256": "e4eba85ea1d0a966a983acd07deee566e67395d2d96b6fb39e62b5a833f1eb0b",
+      "noticeFiles": [
+        "license/native-runtime/crates/glob-0.3.4/LICENSE-APACHE",
+        "license/native-runtime/crates/glob-0.3.4/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "godot",
+      "version": "0.5.4",
+      "license": "MPL-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "4452effbae3a093b187f82149b6b0025667cde9993b22769a012d5bac9e8f39f",
+      "sourceArchive": "cargo-crates/godot-0.5.4-4452effbae3a.crate",
+      "sourceArchiveSha256": "4452effbae3a093b187f82149b6b0025667cde9993b22769a012d5bac9e8f39f",
+      "noticeFiles": [
+        "license/native-runtime/crates/godot-0.5.4/source-notices/src___docs.rs.txt"
+      ],
+      "sourceNoticeSources": [
+        {
+          "noticePath": "license/native-runtime/crates/godot-0.5.4/source-notices/src___docs.rs.txt",
+          "sourceFile": "src/__docs.rs",
+          "sourceFileSha256": "2cf11b493be35c3a5468c06fd144f612ee10d6e162eb8927a95b1c198756d426"
+        }
+      ]
+    },
+    {
+      "name": "godot",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "e21dfe3a0c8c253cb293a4f915f2359fdb4cf45a4d0557cb1841ea99aae4edfb",
+      "sourceArchive": "cargo-crates/godot-0.5.5-e21dfe3a0c8c.crate",
+      "sourceArchiveSha256": "e21dfe3a0c8c253cb293a4f915f2359fdb4cf45a4d0557cb1841ea99aae4edfb",
+      "noticeFiles": [
+        "license/native-runtime/crates/godot-0.5.5/source-notices/src___docs.rs.txt"
+      ],
+      "sourceNoticeSources": [
+        {
+          "noticePath": "license/native-runtime/crates/godot-0.5.5/source-notices/src___docs.rs.txt",
+          "sourceFile": "src/__docs.rs",
+          "sourceFileSha256": "2cf11b493be35c3a5468c06fd144f612ee10d6e162eb8927a95b1c198756d426"
+        }
+      ]
+    },
+    {
+      "name": "godot-bindings",
+      "version": "0.5.4",
+      "license": "MPL-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "773860a42753be6f8bdc40fe8e0ee169164a83605ab7d6dc0c9b746892cd85ed",
+      "sourceArchive": "cargo-crates/godot-bindings-0.5.4-773860a42753.crate",
+      "sourceArchiveSha256": "773860a42753be6f8bdc40fe8e0ee169164a83605ab7d6dc0c9b746892cd85ed",
+      "noticeFiles": [
+        "license/native-runtime/crates/godot-bindings-0.5.4/source-notices/build.rs.txt"
+      ],
+      "sourceNoticeSources": [
+        {
+          "noticePath": "license/native-runtime/crates/godot-bindings-0.5.4/source-notices/build.rs.txt",
+          "sourceFile": "build.rs",
+          "sourceFileSha256": "21fbd55eb4316863ec20268617b4b5a2892ccd5961d170e09318ab2239828dd8"
+        }
+      ]
+    },
+    {
+      "name": "godot-bindings",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "7ce6fed360f27cc44ee188246880bb842cdb96bf13aec1d0ec31cccfa50b1cf6",
+      "sourceArchive": "cargo-crates/godot-bindings-0.5.5-7ce6fed360f2.crate",
+      "sourceArchiveSha256": "7ce6fed360f27cc44ee188246880bb842cdb96bf13aec1d0ec31cccfa50b1cf6",
+      "noticeFiles": [
+        "license/native-runtime/crates/godot-bindings-0.5.5/source-notices/build.rs.txt"
+      ],
+      "sourceNoticeSources": [
+        {
+          "noticePath": "license/native-runtime/crates/godot-bindings-0.5.5/source-notices/build.rs.txt",
+          "sourceFile": "build.rs",
+          "sourceFileSha256": "21fbd55eb4316863ec20268617b4b5a2892ccd5961d170e09318ab2239828dd8"
+        }
+      ]
+    },
+    {
+      "name": "godot-cell",
+      "version": "0.5.4",
+      "license": "MPL-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "f18d30809e2d52da0402ad4c6f1d77b9d35832481c9527bc24a63412bc05252d",
+      "sourceArchive": "cargo-crates/godot-cell-0.5.4-f18d30809e2d.crate",
+      "sourceArchiveSha256": "f18d30809e2d52da0402ad4c6f1d77b9d35832481c9527bc24a63412bc05252d",
+      "noticeFiles": [
+        "license/native-runtime/crates/godot-cell-0.5.4/source-notices/src_blocking_cell.rs.txt"
+      ],
+      "sourceNoticeSources": [
+        {
+          "noticePath": "license/native-runtime/crates/godot-cell-0.5.4/source-notices/src_blocking_cell.rs.txt",
+          "sourceFile": "src/blocking_cell.rs",
+          "sourceFileSha256": "093aab292bfe95519a60aea736cf61266e53187ed426816fafa34b771b739379"
+        }
+      ]
+    },
+    {
+      "name": "godot-cell",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "edc4695597110f27de8f0adbdf3afd01692e3596cc89de2aaa2a42d31b93bfc4",
+      "sourceArchive": "cargo-crates/godot-cell-0.5.5-edc469559711.crate",
+      "sourceArchiveSha256": "edc4695597110f27de8f0adbdf3afd01692e3596cc89de2aaa2a42d31b93bfc4",
+      "noticeFiles": [
+        "license/native-runtime/crates/godot-cell-0.5.5/source-notices/src_blocking_cell.rs.txt"
+      ],
+      "sourceNoticeSources": [
+        {
+          "noticePath": "license/native-runtime/crates/godot-cell-0.5.5/source-notices/src_blocking_cell.rs.txt",
+          "sourceFile": "src/blocking_cell.rs",
+          "sourceFileSha256": "093aab292bfe95519a60aea736cf61266e53187ed426816fafa34b771b739379"
+        }
+      ]
+    },
+    {
+      "name": "godot-codegen",
+      "version": "0.5.4",
+      "license": "MPL-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "85875076fc06a8ad5a452e494274f233da060764208caf2beac2cde4c9df15b5",
+      "sourceArchive": "cargo-crates/godot-codegen-0.5.4-85875076fc06.crate",
+      "sourceArchiveSha256": "85875076fc06a8ad5a452e494274f233da060764208caf2beac2cde4c9df15b5",
+      "noticeFiles": [
+        "license/native-runtime/crates/godot-codegen-0.5.4/source-notices/build.rs.txt"
+      ],
+      "sourceNoticeSources": [
+        {
+          "noticePath": "license/native-runtime/crates/godot-codegen-0.5.4/source-notices/build.rs.txt",
+          "sourceFile": "build.rs",
+          "sourceFileSha256": "39a2277d3e22ed4127afc60e3363849b727f2c641cb56a217959e2f9c548ff61"
+        }
+      ]
+    },
+    {
+      "name": "godot-codegen",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "08409103fba47d9cb5b64dcb0b679b06ba3153d9c96d5e918bb97f065d553c60",
+      "sourceArchive": "cargo-crates/godot-codegen-0.5.5-08409103fba4.crate",
+      "sourceArchiveSha256": "08409103fba47d9cb5b64dcb0b679b06ba3153d9c96d5e918bb97f065d553c60",
+      "noticeFiles": [
+        "license/native-runtime/crates/godot-codegen-0.5.5/source-notices/build.rs.txt"
+      ],
+      "sourceNoticeSources": [
+        {
+          "noticePath": "license/native-runtime/crates/godot-codegen-0.5.5/source-notices/build.rs.txt",
+          "sourceFile": "build.rs",
+          "sourceFileSha256": "39a2277d3e22ed4127afc60e3363849b727f2c641cb56a217959e2f9c548ff61"
+        }
+      ]
+    },
+    {
+      "name": "godot-core",
+      "version": "0.5.4",
+      "license": "MPL-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "57d22572dbf40e5cf4bf36c05da54f9d46dd1ff0944b6e6c7ee412c16386fe88",
+      "sourceArchive": "cargo-crates/godot-core-0.5.4-57d22572dbf4.crate",
+      "sourceArchiveSha256": "57d22572dbf40e5cf4bf36c05da54f9d46dd1ff0944b6e6c7ee412c16386fe88",
+      "noticeFiles": [
+        "license/native-runtime/crates/godot-core-0.5.4/source-notices/build.rs.txt"
+      ],
+      "sourceNoticeSources": [
+        {
+          "noticePath": "license/native-runtime/crates/godot-core-0.5.4/source-notices/build.rs.txt",
+          "sourceFile": "build.rs",
+          "sourceFileSha256": "7900f1dac0032a2183bcdaa4d4b77ae1afb4114b22d516bc18294a350b5eec1b"
+        }
+      ]
+    },
+    {
+      "name": "godot-core",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "40ab630dbc7ce797f09eda29025ebadab1b700778c988ad19c47bddc51874a90",
+      "sourceArchive": "cargo-crates/godot-core-0.5.5-40ab630dbc7c.crate",
+      "sourceArchiveSha256": "40ab630dbc7ce797f09eda29025ebadab1b700778c988ad19c47bddc51874a90",
+      "noticeFiles": [
+        "license/native-runtime/crates/godot-core-0.5.5/source-notices/build.rs.txt"
+      ],
+      "sourceNoticeSources": [
+        {
+          "noticePath": "license/native-runtime/crates/godot-core-0.5.5/source-notices/build.rs.txt",
+          "sourceFile": "build.rs",
+          "sourceFileSha256": "7900f1dac0032a2183bcdaa4d4b77ae1afb4114b22d516bc18294a350b5eec1b"
+        }
+      ]
+    },
+    {
+      "name": "godot-ffi",
+      "version": "0.5.4",
+      "license": "MPL-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "854633981e4f54c84d240d76ac71a816c738890774291f7d430a0adb29db9bd2",
+      "sourceArchive": "cargo-crates/godot-ffi-0.5.4-854633981e4f.crate",
+      "sourceArchiveSha256": "854633981e4f54c84d240d76ac71a816c738890774291f7d430a0adb29db9bd2",
+      "noticeFiles": [
+        "license/native-runtime/crates/godot-ffi-0.5.4/source-notices/build.rs.txt"
+      ],
+      "sourceNoticeSources": [
+        {
+          "noticePath": "license/native-runtime/crates/godot-ffi-0.5.4/source-notices/build.rs.txt",
+          "sourceFile": "build.rs",
+          "sourceFileSha256": "29c5d503e88a9626029a0f68587a03ee7ef43d8bc1f05975a376c737f58784a0"
+        }
+      ]
+    },
+    {
+      "name": "godot-ffi",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "18c296047c042d74828b2cb2e71bbadd22dd4ff98346c696b6c0a4a5decbf57f",
+      "sourceArchive": "cargo-crates/godot-ffi-0.5.5-18c296047c04.crate",
+      "sourceArchiveSha256": "18c296047c042d74828b2cb2e71bbadd22dd4ff98346c696b6c0a4a5decbf57f",
+      "noticeFiles": [
+        "license/native-runtime/crates/godot-ffi-0.5.5/source-notices/build.rs.txt"
+      ],
+      "sourceNoticeSources": [
+        {
+          "noticePath": "license/native-runtime/crates/godot-ffi-0.5.5/source-notices/build.rs.txt",
+          "sourceFile": "build.rs",
+          "sourceFileSha256": "29c5d503e88a9626029a0f68587a03ee7ef43d8bc1f05975a376c737f58784a0"
+        }
+      ]
+    },
+    {
+      "name": "godot-macros",
+      "version": "0.5.4",
+      "license": "MPL-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "37dc9ce1b970e798df827dcccfe68d5985804f93b5fbab156e507999272965f0",
+      "sourceArchive": "cargo-crates/godot-macros-0.5.4-37dc9ce1b970.crate",
+      "sourceArchiveSha256": "37dc9ce1b970e798df827dcccfe68d5985804f93b5fbab156e507999272965f0",
+      "noticeFiles": [
+        "license/native-runtime/crates/godot-macros-0.5.4/source-notices/build.rs.txt"
+      ],
+      "sourceNoticeSources": [
+        {
+          "noticePath": "license/native-runtime/crates/godot-macros-0.5.4/source-notices/build.rs.txt",
+          "sourceFile": "build.rs",
+          "sourceFileSha256": "39a2277d3e22ed4127afc60e3363849b727f2c641cb56a217959e2f9c548ff61"
+        }
+      ]
+    },
+    {
+      "name": "godot-macros",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "c9ffca7ec0dfad5885a96b3819b3dafc1014c36d2931464f96d9ab0bee87b52e",
+      "sourceArchive": "cargo-crates/godot-macros-0.5.5-c9ffca7ec0df.crate",
+      "sourceArchiveSha256": "c9ffca7ec0dfad5885a96b3819b3dafc1014c36d2931464f96d9ab0bee87b52e",
+      "noticeFiles": [
+        "license/native-runtime/crates/godot-macros-0.5.5/source-notices/build.rs.txt"
+      ],
+      "sourceNoticeSources": [
+        {
+          "noticePath": "license/native-runtime/crates/godot-macros-0.5.5/source-notices/build.rs.txt",
+          "sourceFile": "build.rs",
+          "sourceFileSha256": "39a2277d3e22ed4127afc60e3363849b727f2c641cb56a217959e2f9c548ff61"
+        }
+      ]
+    },
+    {
+      "name": "heck",
+      "version": "0.5.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea",
+      "sourceArchive": "cargo-crates/heck-0.5.0-2304e00983f8.crate",
+      "sourceArchiveSha256": "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea",
+      "noticeFiles": [
+        "license/native-runtime/crates/heck-0.5.0/LICENSE-APACHE",
+        "license/native-runtime/crates/heck-0.5.0/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "hermit-abi",
+      "version": "0.3.9",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "d231dfb89cfffdbc30e7fc41579ed6066ad03abda9e567ccafae602b97ec5024",
+      "sourceArchive": "cargo-crates/hermit-abi-0.3.9-d231dfb89cff.crate",
+      "sourceArchiveSha256": "d231dfb89cfffdbc30e7fc41579ed6066ad03abda9e567ccafae602b97ec5024",
+      "noticeFiles": [
+        "license/native-runtime/crates/hermit-abi-0.3.9/LICENSE-APACHE",
+        "license/native-runtime/crates/hermit-abi-0.3.9/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "input",
+      "version": "0.10.0",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "f9793345a65d71317763a33066b5d8351f8760dde8d4930fe9e39b5f14a7959d",
+      "sourceArchive": "cargo-crates/input-0.10.0-f9793345a65d.crate",
+      "sourceArchiveSha256": "f9793345a65d71317763a33066b5d8351f8760dde8d4930fe9e39b5f14a7959d",
+      "noticeFiles": [
+        "license/native-runtime/crates/input-0.10.0/LICENSE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "input-sys",
+      "version": "1.19.0",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "36eee07d8e02bd95bf52b2e642cf13d33701b94c6e4b04fbf1d1fb07e9cb19e7",
+      "sourceArchive": "cargo-crates/input-sys-1.19.0-36eee07d8e02.crate",
+      "sourceArchiveSha256": "36eee07d8e02bd95bf52b2e642cf13d33701b94c6e4b04fbf1d1fb07e9cb19e7",
+      "noticeFiles": [
+        "license/native-runtime/crates/input-sys-1.19.0/LICENSE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "io-lifetimes",
+      "version": "1.0.11",
+      "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "eae7b9aee968036d54dce06cebaefd919e4472e753296daccd6d344e3e2df0c2",
+      "sourceArchive": "cargo-crates/io-lifetimes-1.0.11-eae7b9aee968.crate",
+      "sourceArchiveSha256": "eae7b9aee968036d54dce06cebaefd919e4472e753296daccd6d344e3e2df0c2",
+      "noticeFiles": [
+        "license/native-runtime/crates/io-lifetimes-1.0.11/COPYRIGHT",
+        "license/native-runtime/crates/io-lifetimes-1.0.11/LICENSE-APACHE",
+        "license/native-runtime/crates/io-lifetimes-1.0.11/LICENSE-Apache-2.0_WITH_LLVM-exception",
+        "license/native-runtime/crates/io-lifetimes-1.0.11/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "is_terminal_polyfill",
+      "version": "1.70.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "a6cb138bb79a146c1bd460005623e142ef0181e3d0219cb493e02f7d08a35695",
+      "sourceArchive": "cargo-crates/is_terminal_polyfill-1.70.2-a6cb138bb79a.crate",
+      "sourceArchiveSha256": "a6cb138bb79a146c1bd460005623e142ef0181e3d0219cb493e02f7d08a35695",
+      "noticeFiles": [
+        "license/native-runtime/crates/is_terminal_polyfill-1.70.2/LICENSE-APACHE",
+        "license/native-runtime/crates/is_terminal_polyfill-1.70.2/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "itoa",
+      "version": "1.0.18",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682",
+      "sourceArchive": "cargo-crates/itoa-1.0.18-8f42a60cbdf9.crate",
+      "sourceArchiveSha256": "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682",
+      "noticeFiles": [
+        "license/native-runtime/crates/itoa-1.0.18/LICENSE-APACHE",
+        "license/native-runtime/crates/itoa-1.0.18/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "jiff",
+      "version": "0.2.37",
+      "license": "Unlicense OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "0ab1baf72f08796de0260609515130699b890ac25f30e610ad894bc5856cafdb",
+      "sourceArchive": "cargo-crates/jiff-0.2.37-0ab1baf72f08.crate",
+      "sourceArchiveSha256": "0ab1baf72f08796de0260609515130699b890ac25f30e610ad894bc5856cafdb",
+      "noticeFiles": [
+        "license/native-runtime/crates/jiff-0.2.37/COPYING",
+        "license/native-runtime/crates/jiff-0.2.37/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "jiff-core",
+      "version": "0.1.1",
+      "license": "Unlicense OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "5e52fe76043ccecc9005d2305ebaadf7d7fc0cc89ca6baa10a94d6bc68c7128c",
+      "sourceArchive": "cargo-crates/jiff-core-0.1.1-5e52fe76043c.crate",
+      "sourceArchiveSha256": "5e52fe76043ccecc9005d2305ebaadf7d7fc0cc89ca6baa10a94d6bc68c7128c",
+      "noticeFiles": [
+        "license/native-runtime/crates/jiff-core-0.1.1/COPYING",
+        "license/native-runtime/crates/jiff-core-0.1.1/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "jiff-static",
+      "version": "0.2.37",
+      "license": "Unlicense OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "378268a1116ad67ae6228701118ac9f491d78fda38a40a1f1a9e1348de6f7212",
+      "sourceArchive": "cargo-crates/jiff-static-0.2.37-378268a1116a.crate",
+      "sourceArchiveSha256": "378268a1116ad67ae6228701118ac9f491d78fda38a40a1f1a9e1348de6f7212",
+      "noticeFiles": [
+        "license/native-runtime/crates/jiff-static-0.2.37/COPYING",
+        "license/native-runtime/crates/jiff-static-0.2.37/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "libc",
+      "version": "0.2.189",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "3eaf3ede3fee6db1a4c2ee091bf8a8b4dccdc6d17f656fb07896ee72867612f2",
+      "sourceArchive": "cargo-crates/libc-0.2.189-3eaf3ede3fee.crate",
+      "sourceArchiveSha256": "3eaf3ede3fee6db1a4c2ee091bf8a8b4dccdc6d17f656fb07896ee72867612f2",
+      "noticeFiles": [
+        "license/native-runtime/crates/libc-0.2.189/LICENSE-APACHE",
+        "license/native-runtime/crates/libc-0.2.189/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "libudev-sys",
+      "version": "0.1.4",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "3c8469b4a23b962c1396b9b451dda50ef5b283e8dd309d69033475fa9b334324",
+      "sourceArchive": "cargo-crates/libudev-sys-0.1.4-3c8469b4a23b.crate",
+      "sourceArchiveSha256": "3c8469b4a23b962c1396b9b451dda50ef5b283e8dd309d69033475fa9b334324",
+      "noticeFiles": [
+        "license/native-runtime/crates/libudev-sys-0.1.4/LICENSE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "log",
+      "version": "0.4.25",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "04cbf5b083de1c7e0222a7a51dbfdba1cbe1c6ab0b15e29fff3f6c077fd9cd9f",
+      "sourceArchive": "cargo-crates/log-0.4.25-04cbf5b083de.crate",
+      "sourceArchiveSha256": "04cbf5b083de1c7e0222a7a51dbfdba1cbe1c6ab0b15e29fff3f6c077fd9cd9f",
+      "noticeFiles": [
+        "license/native-runtime/crates/log-0.4.25/LICENSE-APACHE",
+        "license/native-runtime/crates/log-0.4.25/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "log",
+      "version": "0.4.34",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "f9f8bd3e56ce4dfc153cf470fffbfa98c7620958b312ca5c3a4b8d5181fd13c6",
+      "sourceArchive": "cargo-crates/log-0.4.34-f9f8bd3e56ce.crate",
+      "sourceArchiveSha256": "f9f8bd3e56ce4dfc153cf470fffbfa98c7620958b312ca5c3a4b8d5181fd13c6",
+      "noticeFiles": [
+        "license/native-runtime/crates/log-0.4.34/LICENSE-APACHE",
+        "license/native-runtime/crates/log-0.4.34/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.3",
+      "license": "Unlicense OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98",
+      "sourceArchive": "cargo-crates/memchr-2.8.3-cf8baf1c55e6.crate",
+      "sourceArchiveSha256": "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98",
+      "noticeFiles": [
+        "license/native-runtime/crates/memchr-2.8.3/COPYING",
+        "license/native-runtime/crates/memchr-2.8.3/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "nanoserde",
+      "version": "0.2.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "a36fb3a748a4c9736ed7aeb5f2dfc99665247f1ce306abbddb2bf0ba2ac530a4",
+      "sourceArchive": "cargo-crates/nanoserde-0.2.1-a36fb3a748a4.crate",
+      "sourceArchiveSha256": "a36fb3a748a4c9736ed7aeb5f2dfc99665247f1ce306abbddb2bf0ba2ac530a4",
+      "noticeFiles": [
+        "license/native-runtime/crates/nanoserde-0.2.1/LICENSE-APACHE",
+        "license/native-runtime/crates/nanoserde-0.2.1/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "nanoserde-derive",
+      "version": "0.2.1",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "a846cbc04412cf509efcd8f3694b114fc700a035fb5a37f21517f9fb019f1ebc",
+      "sourceArchive": "cargo-crates/nanoserde-derive-0.2.1-a846cbc04412.crate",
+      "sourceArchiveSha256": "a846cbc04412cf509efcd8f3694b114fc700a035fb5a37f21517f9fb019f1ebc",
+      "noticeFiles": [
+        "license/native-runtime/crates/nanoserde-derive-0.2.1/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "nix",
+      "version": "0.29.0",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "71e2746dc3a24dd78b3cfcb7be93368c6de9963d30f43a6a73998a9cf4b17b46",
+      "sourceArchive": "cargo-crates/nix-0.29.0-71e2746dc3a2.crate",
+      "sourceArchiveSha256": "71e2746dc3a24dd78b3cfcb7be93368c6de9963d30f43a6a73998a9cf4b17b46",
+      "noticeFiles": [
+        "license/native-runtime/crates/nix-0.29.0/LICENSE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "once_cell_polyfill",
+      "version": "1.70.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "384b8ab6d37215f3c5301a95a4accb5d64aa607f1fcb26a11b5303878451b4fe",
+      "sourceArchive": "cargo-crates/once_cell_polyfill-1.70.2-384b8ab6d372.crate",
+      "sourceArchiveSha256": "384b8ab6d37215f3c5301a95a4accb5d64aa607f1fcb26a11b5303878451b4fe",
+      "noticeFiles": [
+        "license/native-runtime/crates/once_cell_polyfill-1.70.2/LICENSE-APACHE",
+        "license/native-runtime/crates/once_cell_polyfill-1.70.2/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "paste",
+      "version": "1.0.15",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "57c0d7b74b563b49d38dae00a0c37d4d6de9b432382b2892f0574ddcae73fd0a",
+      "sourceArchive": "cargo-crates/paste-1.0.15-57c0d7b74b56.crate",
+      "sourceArchiveSha256": "57c0d7b74b563b49d38dae00a0c37d4d6de9b432382b2892f0574ddcae73fd0a",
+      "noticeFiles": [
+        "license/native-runtime/crates/paste-1.0.15/LICENSE-APACHE",
+        "license/native-runtime/crates/paste-1.0.15/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "pkg-config",
+      "version": "0.3.31",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "953ec861398dccce10c670dfeaf3ec4911ca479e9c02154b3a215178c5f566f2",
+      "sourceArchive": "cargo-crates/pkg-config-0.3.31-953ec861398d.crate",
+      "sourceArchiveSha256": "953ec861398dccce10c670dfeaf3ec4911ca479e9c02154b3a215178c5f566f2",
+      "noticeFiles": [
+        "license/native-runtime/crates/pkg-config-0.3.31/LICENSE-APACHE",
+        "license/native-runtime/crates/pkg-config-0.3.31/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "portable-atomic",
+      "version": "1.15.0",
+      "license": "Apache-2.0 OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "05c8b63e8d9609db387f0324918f81d68fe27748f084ef092fb35954d0539a85",
+      "sourceArchive": "cargo-crates/portable-atomic-1.15.0-05c8b63e8d96.crate",
+      "sourceArchiveSha256": "05c8b63e8d9609db387f0324918f81d68fe27748f084ef092fb35954d0539a85",
+      "noticeFiles": [
+        "license/native-runtime/crates/portable-atomic-1.15.0/LICENSE-APACHE",
+        "license/native-runtime/crates/portable-atomic-1.15.0/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "portable-atomic-util",
+      "version": "0.2.8",
+      "license": "Apache-2.0 OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "10ab3eb7f3becc3a1cbc4f2c6f20267996cfc1a6467a873763411b136a122715",
+      "sourceArchive": "cargo-crates/portable-atomic-util-0.2.8-10ab3eb7f3be.crate",
+      "sourceArchiveSha256": "10ab3eb7f3becc3a1cbc4f2c6f20267996cfc1a6467a873763411b136a122715",
+      "noticeFiles": [
+        "license/native-runtime/crates/portable-atomic-util-0.2.8/LICENSE-APACHE",
+        "license/native-runtime/crates/portable-atomic-util-0.2.8/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.107",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9",
+      "sourceArchive": "cargo-crates/proc-macro2-1.0.107-985e7ec9bb74.crate",
+      "sourceArchiveSha256": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9",
+      "noticeFiles": [
+        "license/native-runtime/crates/proc-macro2-1.0.107/LICENSE-APACHE",
+        "license/native-runtime/crates/proc-macro2-1.0.107/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "quote",
+      "version": "1.0.47",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001",
+      "sourceArchive": "cargo-crates/quote-1.0.47-1fbf4db142a4.crate",
+      "sourceArchiveSha256": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001",
+      "noticeFiles": [
+        "license/native-runtime/crates/quote-1.0.47/LICENSE-APACHE",
+        "license/native-runtime/crates/quote-1.0.47/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "radium",
+      "version": "0.7.0",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "dc33ff2d4973d518d823d61aa239014831e521c75da58e3df4840d3f47749d09",
+      "sourceArchive": "cargo-crates/radium-0.7.0-dc33ff2d4973.crate",
+      "sourceArchiveSha256": "dc33ff2d4973d518d823d61aa239014831e521c75da58e3df4840d3f47749d09",
+      "noticeFiles": [
+        "license/native-runtime/crates/radium-0.7.0/LICENSE.txt"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "rayon",
+      "version": "1.12.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "fb39b166781f92d482534ef4b4b1b2568f42613b53e5b6c160e24cfbfa30926d",
+      "sourceArchive": "cargo-crates/rayon-1.12.0-fb39b166781f.crate",
+      "sourceArchiveSha256": "fb39b166781f92d482534ef4b4b1b2568f42613b53e5b6c160e24cfbfa30926d",
+      "noticeFiles": [
+        "license/native-runtime/crates/rayon-1.12.0/LICENSE-APACHE",
+        "license/native-runtime/crates/rayon-1.12.0/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "rayon-core",
+      "version": "1.13.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "22e18b0f0062d30d4230b2e85ff77fdfe4326feb054b9783a3460d8435c8ab91",
+      "sourceArchive": "cargo-crates/rayon-core-1.13.0-22e18b0f0062.crate",
+      "sourceArchiveSha256": "22e18b0f0062d30d4230b2e85ff77fdfe4326feb054b9783a3460d8435c8ab91",
+      "noticeFiles": [
+        "license/native-runtime/crates/rayon-core-1.13.0/LICENSE-APACHE",
+        "license/native-runtime/crates/rayon-core-1.13.0/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "regex",
+      "version": "1.13.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "f020237b6c8eed93db2e2cb53c00c60a8e1bc73da7d073199a1180401450218d",
+      "sourceArchive": "cargo-crates/regex-1.13.1-f020237b6c8e.crate",
+      "sourceArchiveSha256": "f020237b6c8eed93db2e2cb53c00c60a8e1bc73da7d073199a1180401450218d",
+      "noticeFiles": [
+        "license/native-runtime/crates/regex-1.13.1/LICENSE-APACHE",
+        "license/native-runtime/crates/regex-1.13.1/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "regex-automata",
+      "version": "0.4.18",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "ad8553b9b26413251cbf30e620595c7a41b3887f03da04579c0e6b0d6a06b4b2",
+      "sourceArchive": "cargo-crates/regex-automata-0.4.18-ad8553b9b264.crate",
+      "sourceArchiveSha256": "ad8553b9b26413251cbf30e620595c7a41b3887f03da04579c0e6b0d6a06b4b2",
+      "noticeFiles": [
+        "license/native-runtime/crates/regex-automata-0.4.18/LICENSE-APACHE",
+        "license/native-runtime/crates/regex-automata-0.4.18/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "regex-syntax",
+      "version": "0.8.11",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4",
+      "sourceArchive": "cargo-crates/regex-syntax-0.8.11-d6f6ff9a3784.crate",
+      "sourceArchiveSha256": "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4",
+      "noticeFiles": [
+        "license/native-runtime/crates/regex-syntax-0.8.11/LICENSE-APACHE",
+        "license/native-runtime/crates/regex-syntax-0.8.11/LICENSE-MIT",
+        "license/native-runtime/crates/regex-syntax-0.8.11/src/unicode_tables/LICENSE-UNICODE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "rustc_version",
+      "version": "0.4.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "cfcb3a22ef46e85b45de6ee7e79d063319ebb6594faafcf1c225ea92ab6e9b92",
+      "sourceArchive": "cargo-crates/rustc_version-0.4.1-cfcb3a22ef46.crate",
+      "sourceArchiveSha256": "cfcb3a22ef46e85b45de6ee7e79d063319ebb6594faafcf1c225ea92ab6e9b92",
+      "noticeFiles": [
+        "license/native-runtime/crates/rustc_version-0.4.1/LICENSE-APACHE",
+        "license/native-runtime/crates/rustc_version-0.4.1/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "semver",
+      "version": "1.0.28",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "8a7852d02fc848982e0c167ef163aaff9cd91dc640ba85e263cb1ce46fae51cd",
+      "sourceArchive": "cargo-crates/semver-1.0.28-8a7852d02fc8.crate",
+      "sourceArchiveSha256": "8a7852d02fc848982e0c167ef163aaff9cd91dc640ba85e263cb1ce46fae51cd",
+      "noticeFiles": [
+        "license/native-runtime/crates/semver-1.0.28/LICENSE-APACHE",
+        "license/native-runtime/crates/semver-1.0.28/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "serde",
+      "version": "1.0.229",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "4148590afebada386688f18773da617792bf2ef03ffc1e4cbd2b1d45b023e0ba",
+      "sourceArchive": "cargo-crates/serde-1.0.229-4148590afeba.crate",
+      "sourceArchiveSha256": "4148590afebada386688f18773da617792bf2ef03ffc1e4cbd2b1d45b023e0ba",
+      "noticeFiles": [
+        "license/native-runtime/crates/serde-1.0.229/LICENSE-APACHE",
+        "license/native-runtime/crates/serde-1.0.229/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.229",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "67dca2c9c51e58a4791a4b1ed58308b39c64224d349a935ab5039aa360942a48",
+      "sourceArchive": "cargo-crates/serde_core-1.0.229-67dca2c9c51e.crate",
+      "sourceArchiveSha256": "67dca2c9c51e58a4791a4b1ed58308b39c64224d349a935ab5039aa360942a48",
+      "noticeFiles": [
+        "license/native-runtime/crates/serde_core-1.0.229/LICENSE-APACHE",
+        "license/native-runtime/crates/serde_core-1.0.229/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.229",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "e7a5d71263a5a7d47b41f6b3f06ba276f10cc18b0931f1799f710578e2309348",
+      "sourceArchive": "cargo-crates/serde_derive-1.0.229-e7a5d71263a5.crate",
+      "sourceArchiveSha256": "e7a5d71263a5a7d47b41f6b3f06ba276f10cc18b0931f1799f710578e2309348",
+      "noticeFiles": [
+        "license/native-runtime/crates/serde_derive-1.0.229/LICENSE-APACHE",
+        "license/native-runtime/crates/serde_derive-1.0.229/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "serde_json",
+      "version": "1.0.151",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "c841b55ecdae098c80dcae9cf767f6f8a0c2cdb3416bbef72181df4d0fe73f14",
+      "sourceArchive": "cargo-crates/serde_json-1.0.151-c841b55ecdae.crate",
+      "sourceArchiveSha256": "c841b55ecdae098c80dcae9cf767f6f8a0c2cdb3416bbef72181df4d0fe73f14",
+      "noticeFiles": [
+        "license/native-runtime/crates/serde_json-1.0.151/LICENSE-APACHE",
+        "license/native-runtime/crates/serde_json-1.0.151/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "static_assertions",
+      "version": "1.1.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f",
+      "sourceArchive": "cargo-crates/static_assertions-1.1.0-a2eb9349b644.crate",
+      "sourceArchiveSha256": "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f",
+      "noticeFiles": [
+        "license/native-runtime/crates/static_assertions-1.1.0/LICENSE-APACHE",
+        "license/native-runtime/crates/static_assertions-1.1.0/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "strum",
+      "version": "0.28.0",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "9628de9b8791db39ceda2b119bbe13134770b56c138ec1d3af810d045c04f9bd",
+      "sourceArchive": "cargo-crates/strum-0.28.0-9628de9b8791.crate",
+      "sourceArchiveSha256": "9628de9b8791db39ceda2b119bbe13134770b56c138ec1d3af810d045c04f9bd",
+      "noticeFiles": [
+        "license/native-runtime/crates/strum-0.28.0/LICENSE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "strum_macros",
+      "version": "0.28.0",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "ab85eea0270ee17587ed4156089e10b9e6880ee688791d45a905f5b1ca36f664",
+      "sourceArchive": "cargo-crates/strum_macros-0.28.0-ab85eea0270e.crate",
+      "sourceArchiveSha256": "ab85eea0270ee17587ed4156089e10b9e6880ee688791d45a905f5b1ca36f664",
+      "noticeFiles": [
+        "license/native-runtime/crates/strum_macros-0.28.0/LICENSE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "syn",
+      "version": "2.0.119",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "872831b642d1a07999a962a351ed35b955ea2cfc8f3862091e2a240a84f17297",
+      "sourceArchive": "cargo-crates/syn-2.0.119-872831b642d1.crate",
+      "sourceArchiveSha256": "872831b642d1a07999a962a351ed35b955ea2cfc8f3862091e2a240a84f17297",
+      "noticeFiles": [
+        "license/native-runtime/crates/syn-2.0.119/LICENSE-APACHE",
+        "license/native-runtime/crates/syn-2.0.119/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "syn",
+      "version": "3.0.5",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "12df2e0110f65b775f769bb17ef989067a1d931b2eb822bd4346631eeada89f9",
+      "sourceArchive": "cargo-crates/syn-3.0.5-12df2e0110f6.crate",
+      "sourceArchiveSha256": "12df2e0110f65b775f769bb17ef989067a1d931b2eb822bd4346631eeada89f9",
+      "noticeFiles": [
+        "license/native-runtime/crates/syn-3.0.5/LICENSE-APACHE",
+        "license/native-runtime/crates/syn-3.0.5/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "tap",
+      "version": "1.0.1",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "55937e1799185b12863d447f42597ed69d9928686b8d88a1df17376a097d8369",
+      "sourceArchive": "cargo-crates/tap-1.0.1-55937e179918.crate",
+      "sourceArchiveSha256": "55937e1799185b12863d447f42597ed69d9928686b8d88a1df17376a097d8369",
+      "noticeFiles": [
+        "license/native-runtime/crates/tap-1.0.1/LICENSE.txt"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "thiserror",
+      "version": "2.0.20",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "ec86235f5fcc2a73650310756d2ac5b138a5780bbbdfae3eeccec992c435ba4f",
+      "sourceArchive": "cargo-crates/thiserror-2.0.20-ec86235f5fcc.crate",
+      "sourceArchiveSha256": "ec86235f5fcc2a73650310756d2ac5b138a5780bbbdfae3eeccec992c435ba4f",
+      "noticeFiles": [
+        "license/native-runtime/crates/thiserror-2.0.20/LICENSE-APACHE",
+        "license/native-runtime/crates/thiserror-2.0.20/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "thiserror-impl",
+      "version": "2.0.20",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "bc04cd3e1236dd4a98afca4569f2deb3f120e5422a4023be2cb683f8486292af",
+      "sourceArchive": "cargo-crates/thiserror-impl-2.0.20-bc04cd3e1236.crate",
+      "sourceArchiveSha256": "bc04cd3e1236dd4a98afca4569f2deb3f120e5422a4023be2cb683f8486292af",
+      "noticeFiles": [
+        "license/native-runtime/crates/thiserror-impl-2.0.20/LICENSE-APACHE",
+        "license/native-runtime/crates/thiserror-impl-2.0.20/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "udev",
+      "version": "0.9.1",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "e3d5c197b95f1769931c89f85c33c407801d1fb7a311113bc0b39ad036f1bd81",
+      "sourceArchive": "cargo-crates/udev-0.9.1-e3d5c197b95f.crate",
+      "sourceArchiveSha256": "e3d5c197b95f1769931c89f85c33c407801d1fb7a311113bc0b39ad036f1bd81",
+      "noticeFiles": [
+        "license/native-runtime/crates/udev-0.9.1/LICENSE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.14",
+      "license": "(MIT OR Apache-2.0) AND Unicode-3.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "adb9e6ca4f869e1180728b7950e35922a7fc6397f7b641499e8f3ef06e50dc83",
+      "sourceArchive": "cargo-crates/unicode-ident-1.0.14-adb9e6ca4f86.crate",
+      "sourceArchiveSha256": "adb9e6ca4f869e1180728b7950e35922a7fc6397f7b641499e8f3ef06e50dc83",
+      "noticeFiles": [
+        "license/native-runtime/crates/unicode-ident-1.0.14/LICENSE-APACHE",
+        "license/native-runtime/crates/unicode-ident-1.0.14/LICENSE-MIT",
+        "license/native-runtime/crates/unicode-ident-1.0.14/LICENSE-UNICODE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.24",
+      "license": "(MIT OR Apache-2.0) AND Unicode-3.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+      "sourceArchive": "cargo-crates/unicode-ident-1.0.24-e6e4313cd5fc.crate",
+      "sourceArchiveSha256": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+      "noticeFiles": [
+        "license/native-runtime/crates/unicode-ident-1.0.24/LICENSE-APACHE",
+        "license/native-runtime/crates/unicode-ident-1.0.24/LICENSE-MIT",
+        "license/native-runtime/crates/unicode-ident-1.0.24/LICENSE-UNICODE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "unicode-segmentation",
+      "version": "1.13.3",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "c6f5d3c3b1bf09027a88a6bc961fc00497d651009560b5463668dc81b0fa87a8",
+      "sourceArchive": "cargo-crates/unicode-segmentation-1.13.3-c6f5d3c3b1bf.crate",
+      "sourceArchiveSha256": "c6f5d3c3b1bf09027a88a6bc961fc00497d651009560b5463668dc81b0fa87a8",
+      "noticeFiles": [
+        "license/native-runtime/crates/unicode-segmentation-1.13.3/COPYRIGHT",
+        "license/native-runtime/crates/unicode-segmentation-1.13.3/LICENSE-APACHE",
+        "license/native-runtime/crates/unicode-segmentation-1.13.3/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "unicode-xid",
+      "version": "0.2.6",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "ebc1c04c71510c7f702b52b7c350734c9ff1295c464a03335b00bb84fc54f853",
+      "sourceArchive": "cargo-crates/unicode-xid-0.2.6-ebc1c04c7151.crate",
+      "sourceArchiveSha256": "ebc1c04c71510c7f702b52b7c350734c9ff1295c464a03335b00bb84fc54f853",
+      "noticeFiles": [
+        "license/native-runtime/crates/unicode-xid-0.2.6/COPYRIGHT",
+        "license/native-runtime/crates/unicode-xid-0.2.6/LICENSE-APACHE",
+        "license/native-runtime/crates/unicode-xid-0.2.6/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "utf8parse",
+      "version": "0.2.2",
+      "license": "Apache-2.0 OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "06abde3611657adf66d383f00b093d7faecc7fa57071cce2578660c9f1010821",
+      "sourceArchive": "cargo-crates/utf8parse-0.2.2-06abde361165.crate",
+      "sourceArchiveSha256": "06abde3611657adf66d383f00b093d7faecc7fa57071cce2578660c9f1010821",
+      "noticeFiles": [
+        "license/native-runtime/crates/utf8parse-0.2.2/LICENSE-APACHE",
+        "license/native-runtime/crates/utf8parse-0.2.2/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "venial",
+      "version": "0.6.1",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "9a42528baceab6c7784446df2a10f4185078c39bf73dc614f154353f1a6b1229",
+      "sourceArchive": "cargo-crates/venial-0.6.1-9a42528bacea.crate",
+      "sourceArchiveSha256": "9a42528baceab6c7784446df2a10f4185078c39bf73dc614f154353f1a6b1229",
+      "noticeFiles": [
+        "license/native-runtime/crates/venial-0.6.1/LICENSE"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "windows_aarch64_gnullvm",
+      "version": "0.48.5",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "2b38e32f0abccf9987a4e3079dfb67dcd799fb61361e53e2882c3cbaf0d905d8",
+      "sourceArchive": "cargo-crates/windows_aarch64_gnullvm-0.48.5-2b38e32f0abc.crate",
+      "sourceArchiveSha256": "2b38e32f0abccf9987a4e3079dfb67dcd799fb61361e53e2882c3cbaf0d905d8",
+      "noticeFiles": [
+        "license/native-runtime/crates/windows_aarch64_gnullvm-0.48.5/license-apache-2.0",
+        "license/native-runtime/crates/windows_aarch64_gnullvm-0.48.5/license-mit"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "windows_aarch64_msvc",
+      "version": "0.48.5",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "dc35310971f3b2dbbf3f0690a219f40e2d9afcf64f9ab7cc1be722937c26b4bc",
+      "sourceArchive": "cargo-crates/windows_aarch64_msvc-0.48.5-dc35310971f3.crate",
+      "sourceArchiveSha256": "dc35310971f3b2dbbf3f0690a219f40e2d9afcf64f9ab7cc1be722937c26b4bc",
+      "noticeFiles": [
+        "license/native-runtime/crates/windows_aarch64_msvc-0.48.5/license-apache-2.0",
+        "license/native-runtime/crates/windows_aarch64_msvc-0.48.5/license-mit"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "windows_i686_gnu",
+      "version": "0.48.5",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "a75915e7def60c94dcef72200b9a8e58e5091744960da64ec734a6c6e9b3743e",
+      "sourceArchive": "cargo-crates/windows_i686_gnu-0.48.5-a75915e7def6.crate",
+      "sourceArchiveSha256": "a75915e7def60c94dcef72200b9a8e58e5091744960da64ec734a6c6e9b3743e",
+      "noticeFiles": [
+        "license/native-runtime/crates/windows_i686_gnu-0.48.5/license-apache-2.0",
+        "license/native-runtime/crates/windows_i686_gnu-0.48.5/license-mit"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "windows_i686_msvc",
+      "version": "0.48.5",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "8f55c233f70c4b27f66c523580f78f1004e8b5a8b659e05a4eb49d4166cca406",
+      "sourceArchive": "cargo-crates/windows_i686_msvc-0.48.5-8f55c233f70c.crate",
+      "sourceArchiveSha256": "8f55c233f70c4b27f66c523580f78f1004e8b5a8b659e05a4eb49d4166cca406",
+      "noticeFiles": [
+        "license/native-runtime/crates/windows_i686_msvc-0.48.5/license-apache-2.0",
+        "license/native-runtime/crates/windows_i686_msvc-0.48.5/license-mit"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "windows_x86_64_gnu",
+      "version": "0.48.5",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "53d40abd2583d23e4718fddf1ebec84dbff8381c07cae67ff7768bbf19c6718e",
+      "sourceArchive": "cargo-crates/windows_x86_64_gnu-0.48.5-53d40abd2583.crate",
+      "sourceArchiveSha256": "53d40abd2583d23e4718fddf1ebec84dbff8381c07cae67ff7768bbf19c6718e",
+      "noticeFiles": [
+        "license/native-runtime/crates/windows_x86_64_gnu-0.48.5/license-apache-2.0",
+        "license/native-runtime/crates/windows_x86_64_gnu-0.48.5/license-mit"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "windows_x86_64_gnullvm",
+      "version": "0.48.5",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "0b7b52767868a23d5bab768e390dc5f5c55825b6d30b86c844ff2dc7414044cc",
+      "sourceArchive": "cargo-crates/windows_x86_64_gnullvm-0.48.5-0b7b52767868.crate",
+      "sourceArchiveSha256": "0b7b52767868a23d5bab768e390dc5f5c55825b6d30b86c844ff2dc7414044cc",
+      "noticeFiles": [
+        "license/native-runtime/crates/windows_x86_64_gnullvm-0.48.5/license-apache-2.0",
+        "license/native-runtime/crates/windows_x86_64_gnullvm-0.48.5/license-mit"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "windows_x86_64_msvc",
+      "version": "0.48.5",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "ed94fce61571a4006852b7389a063ab983c02eb1bb37b47f8272ce92d06d9538",
+      "sourceArchive": "cargo-crates/windows_x86_64_msvc-0.48.5-ed94fce61571.crate",
+      "sourceArchiveSha256": "ed94fce61571a4006852b7389a063ab983c02eb1bb37b47f8272ce92d06d9538",
+      "noticeFiles": [
+        "license/native-runtime/crates/windows_x86_64_msvc-0.48.5/license-apache-2.0",
+        "license/native-runtime/crates/windows_x86_64_msvc-0.48.5/license-mit"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "windows-link",
+      "version": "0.2.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5",
+      "sourceArchive": "cargo-crates/windows-link-0.2.1-f0805222e57f.crate",
+      "sourceArchiveSha256": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5",
+      "noticeFiles": [
+        "license/native-runtime/crates/windows-link-0.2.1/license-apache-2.0",
+        "license/native-runtime/crates/windows-link-0.2.1/license-mit"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "windows-sys",
+      "version": "0.48.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "677d2418bec65e3338edb076e806bc1ec15693c5d0104683f2efe857f61056a9",
+      "sourceArchive": "cargo-crates/windows-sys-0.48.0-677d2418bec6.crate",
+      "sourceArchiveSha256": "677d2418bec65e3338edb076e806bc1ec15693c5d0104683f2efe857f61056a9",
+      "noticeFiles": [
+        "license/native-runtime/crates/windows-sys-0.48.0/license-apache-2.0",
+        "license/native-runtime/crates/windows-sys-0.48.0/license-mit"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "windows-sys",
+      "version": "0.61.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc",
+      "sourceArchive": "cargo-crates/windows-sys-0.61.2-ae137229bcbd.crate",
+      "sourceArchiveSha256": "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc",
+      "noticeFiles": [
+        "license/native-runtime/crates/windows-sys-0.61.2/license-apache-2.0",
+        "license/native-runtime/crates/windows-sys-0.61.2/license-mit"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "windows-targets",
+      "version": "0.48.5",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "9a2fa6e2155d7247be68c096456083145c183cbbbc2764150dda45a87197940c",
+      "sourceArchive": "cargo-crates/windows-targets-0.48.5-9a2fa6e2155d.crate",
+      "sourceArchiveSha256": "9a2fa6e2155d7247be68c096456083145c183cbbbc2764150dda45a87197940c",
+      "noticeFiles": [
+        "license/native-runtime/crates/windows-targets-0.48.5/license-apache-2.0",
+        "license/native-runtime/crates/windows-targets-0.48.5/license-mit"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "wyz",
+      "version": "0.5.1",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "05f360fc0b24296329c78fda852a1e9ae82de9cf7b27dae4b7f62f118f77b9ed",
+      "sourceArchive": "cargo-crates/wyz-0.5.1-05f360fc0b24.crate",
+      "sourceArchiveSha256": "05f360fc0b24296329c78fda852a1e9ae82de9cf7b27dae4b7f62f118f77b9ed",
+      "noticeFiles": [
+        "license/native-runtime/crates/wyz-0.5.1/LICENSE.txt"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "zerocopy",
+      "version": "0.8.57",
+      "license": "BSD-2-Clause OR Apache-2.0 OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "d35102a9f36d089ccae9e4c6802bc118be4487b80aaffc0ab4e0cf5ce92d2873",
+      "sourceArchive": "cargo-crates/zerocopy-0.8.57-d35102a9f36d.crate",
+      "sourceArchiveSha256": "d35102a9f36d089ccae9e4c6802bc118be4487b80aaffc0ab4e0cf5ce92d2873",
+      "noticeFiles": [
+        "license/native-runtime/crates/zerocopy-0.8.57/LICENSE-APACHE",
+        "license/native-runtime/crates/zerocopy-0.8.57/LICENSE-BSD",
+        "license/native-runtime/crates/zerocopy-0.8.57/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "zerocopy-derive",
+      "version": "0.8.57",
+      "license": "BSD-2-Clause OR Apache-2.0 OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "146c01f5ab44258da43cf276c74a2763db2ff3969c9c652c3f2de07041d0b2bc",
+      "sourceArchive": "cargo-crates/zerocopy-derive-0.8.57-146c01f5ab44.crate",
+      "sourceArchiveSha256": "146c01f5ab44258da43cf276c74a2763db2ff3969c9c652c3f2de07041d0b2bc",
+      "noticeFiles": [
+        "license/native-runtime/crates/zerocopy-derive-0.8.57/LICENSE-APACHE",
+        "license/native-runtime/crates/zerocopy-derive-0.8.57/LICENSE-BSD",
+        "license/native-runtime/crates/zerocopy-derive-0.8.57/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    },
+    {
+      "name": "zmij",
+      "version": "1.0.23",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "cargoLockChecksum": "29666d0abbfad1e3dc4dcf6144730dd3a3ab225bbbdac83319345b1b44ccfc1b",
+      "sourceArchive": "cargo-crates/zmij-1.0.23-29666d0abbfa.crate",
+      "sourceArchiveSha256": "29666d0abbfad1e3dc4dcf6144730dd3a3ab225bbbdac83319345b1b44ccfc1b",
+      "noticeFiles": [
+        "license/native-runtime/crates/zmij-1.0.23/LICENSE-MIT"
+      ],
+      "sourceNoticeSources": []
+    }
+  ],
+  "additionalSources": [
+    {
+      "component": "gd-keylogger (Windows patch)",
+      "version": "0.3.0",
+      "source": "git+https://github.com/erodozer/godot-keylogger#c3e71371f212456713ce88a0f78083a5d2a3a02f plus patches/keylogger-windows.patch",
+      "gitRevision": "c3e71371f212456713ce88a0f78083a5d2a3a02f",
+      "patchSha256": "ea5e53a3131d8876b8c907dad6678ffda8b13aa72522640ca96717f8754a8f49",
+      "sourceArchive": "patched-gd-keylogger-c3e71371f212456713ce88a0f78083a5d2a3a02f-EA5E53A3131D.zip",
+      "sourceArchiveSha256": "fb6f03d6727653bb403b6ba51b56ea3d51d945caadd1836f6720527b81635f9a",
+      "licenseNotice": "license/LICENSE.keylogger.md"
+    }
+  ],
+  "rustStandardLibrary": {
+    "rustcVersion": "rustc 1.97.0 (2d8144b78 2026-07-07)\r\nbinary: rustc\r\ncommit-hash: 2d8144b7880597b6e6d3dfd63a9a9efae3f533d3\r\ncommit-date: 2026-07-07\r\nhost: x86_64-pc-windows-msvc\r\nrelease: 1.97.0\r\nLLVM version: 22.1.6",
+    "standardLibraryNoticeSource": "rustup toolchain share/doc/rust/COPYRIGHT-library.html",
+    "standardLibraryNotice": "license/native-runtime/rust/COPYRIGHT-library.html",
+    "standardLibraryNoticeSourceSha256": "0a65bb747c49c7bb816cbc7188319bd6e4e8d08091c1190b8a3c0971c47968ed",
+    "standardLibraryNoticeSha256": "0a65bb747c49c7bb816cbc7188319bd6e4e8d08091c1190b8a3c0971c47968ed"
+  },
+  "supplementalLicenseSources": [
+    {
+      "name": "defmt-parser",
+      "version": "1.0.0",
+      "upstream": "https://raw.githubusercontent.com/knurling-rs/defmt/4a8cdb44891ed57b8ff5a023b6bec7137c48708f/LICENSE-MIT",
+      "gitRevision": "4a8cdb44891ed57b8ff5a023b6bec7137c48708f",
+      "sha256": "2710a622a896bba67356913d4d0492cab5465f61b2ecce6d880aeb483834fb50",
+      "path": "license/native-runtime/crates/defmt-parser-1.0.0/LICENSE-MIT"
+    },
+    {
+      "name": "defmt-parser",
+      "version": "1.0.0",
+      "upstream": "https://raw.githubusercontent.com/knurling-rs/defmt/4a8cdb44891ed57b8ff5a023b6bec7137c48708f/LICENSE-APACHE",
+      "gitRevision": "4a8cdb44891ed57b8ff5a023b6bec7137c48708f",
+      "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+      "path": "license/native-runtime/crates/defmt-parser-1.0.0/LICENSE-APACHE"
+    },
+    {
+      "name": "nanoserde-derive",
+      "version": "0.2.1",
+      "upstream": "https://raw.githubusercontent.com/not-fl3/nanoserde/85623c43b0876c23797c6046c8dea18dafa4e7ae/LICENSE-MIT",
+      "gitRevision": "85623c43b0876c23797c6046c8dea18dafa4e7ae",
+      "sha256": "7ba57659687d080189c3f520bc032919d62f45270cbb84977560fa7ab6b24eee",
+      "path": "license/native-runtime/crates/nanoserde-derive-0.2.1/LICENSE-MIT"
+    }
+  ],
+  "standaloneLicenseTexts": [
+    {
+      "spdx": "MPL-2.0",
+      "path": "license/native-runtime/MPL-2.0.txt",
+      "upstream": "https://www.mozilla.org/media/MPL/2.0/index.f75d2927d3c1.txt",
+      "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+      "appliesTo": [
+        "gdextension-api@0.5.1",
+        "godot-bindings@0.5.4",
+        "godot-bindings@0.5.5",
+        "godot-cell@0.5.4",
+        "godot-cell@0.5.5",
+        "godot-codegen@0.5.4",
+        "godot-codegen@0.5.5",
+        "godot-core@0.5.4",
+        "godot-core@0.5.5",
+        "godot-ffi@0.5.4",
+        "godot-ffi@0.5.5",
+        "godot-macros@0.5.4",
+        "godot-macros@0.5.5",
+        "godot@0.5.4",
+        "godot@0.5.5"
+      ],
+      "sourceArchiveCoverage": "Each locked godot-rust/MPL-2.0 crate is shipped as its SHA-256-verified original .crate archive under CorrespondingSource/native-runtime/cargo-crates; those archives preserve the exact covered source and per-file license headers."
+    }
+  ],
+  "missingNoticeFiles": []
+}

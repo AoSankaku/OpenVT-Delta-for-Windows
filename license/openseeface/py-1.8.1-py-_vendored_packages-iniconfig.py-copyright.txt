@@ -1,0 +1,3 @@
+""" brain-dead simple parser for ini-style files.
+(C) Ronny Pfannschmidt, Holger Krekel -- MIT licensed
+"""

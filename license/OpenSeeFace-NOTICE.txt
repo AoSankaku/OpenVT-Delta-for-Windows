@@ -1,0 +1,55 @@
+OpenSeeFace bundled with OpenVT Delta for Windows
+================================================
+
+This distribution includes OpenSeeFace 1.20.5 by Emiliana, provided as a
+separate, unmodified executable. OpenVT Delta for Windows starts it to process webcam frames
+locally and receive facial tracking parameters over loopback UDP.
+
+OpenSeeFace is licensed under the BSD 2-Clause License. Its copyright,
+license conditions and disclaimer are preserved in openseeface/LICENSE
+and openseeface/Licenses/OpenSeeFace.txt. The upstream notices in
+openseeface/Licenses and additional runtime notices in
+openseeface/AdditionalLicenses are part of this distribution.
+
+Upstream release:
+https://github.com/emilianavt/OpenSeeFace/releases/tag/v1.20.5
+
+DShowCapture
+------------
+
+The separate dshowcapture_x64.dll and dshowcapture_x86.dll libraries are
+licensed under GNU LGPL version 2.1. The license is preserved in
+openseeface/Licenses/DShowCapture.txt. Both unmodified DLLs exactly match
+libdshowcapture release v20250803, source revision:
+b6b35fc5d8fe17c8b1c7029f37a05622d65ee810
+
+The complete corresponding library source, including its license and
+build project files, is supplied in:
+openseeface/CorrespondingSource/libdshowcapture-b6b35fc5-source.zip
+
+Source repository:
+https://github.com/emilianavt/libdshowcapture/tree/v20250803
+
+These DLLs remain separate files loaded dynamically by OpenSeeFace.
+Users may replace them with interface-compatible modified builds.
+Modification for personal use and reverse engineering for debugging
+such modifications are permitted as specified by the LGPL.
+
+Eigen (used by ONNX Runtime)
+---------------------------
+
+ONNX Runtime 1.5.1 includes Eigen code under the Mozilla Public License
+2.0. The covered Eigen source and its COPYING files are supplied in:
+openseeface/CorrespondingSource/eigen-d10b27fe-source.tar.gz
+
+The source matches ONNX Runtime's pinned Eigen revision:
+d10b27fe37736d2944630ecd7557cefa95cf87c9
+https://gitlab.com/libeigen/eigen/-/tree/d10b27fe37736d2944630ecd7557cefa95cf87c9
+It is obtained from the Google mirror of that upstream Git repository.
+The MPL license is also included in the ONNX Runtime third-party notices
+under openseeface/AdditionalLicenses.
+
+The OpenSeeFace component and its dependencies retain their respective
+licenses; OpenVT Delta for Windows' MIT license does not replace those license terms.
+When redistributing this bundle, retain these notices, upstream licenses,
+additional runtime licenses, and corresponding library source.

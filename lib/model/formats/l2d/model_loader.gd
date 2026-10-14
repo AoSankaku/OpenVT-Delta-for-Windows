@@ -32,9 +32,12 @@ func load_data(path: String) -> ModelMeta:
 
 	if FileAccess.file_exists(vt_file):
 		var vtube_data = Files.read_json(vt_file)
-		var vt_file_refs = vtube_data.get("FileReferences", {})
-		meta.name = vtube_data["Name"]
-		meta.id = vtube_data["ModelID"]
+		var model_name: Variant = vtube_data.get("Name")
+		var model_id: Variant = vtube_data.get("ModelID")
+		if model_name is String and not model_name.is_empty():
+			meta.name = model_name
+		if model_id is String and not model_id.is_empty():
+			meta.id = model_id
 	
 	var model_data = Files.read_json(filepath)
 	meta.path = path.get_base_dir()

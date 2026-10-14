@@ -15,11 +15,13 @@ var fps: float = 0.0
 func parameters(time: float = Time.get_ticks_msec()) -> Dictionary:
 	# blend ranges based on sample rate
 	# we always blend with a 1 update delay
-	var progress: float = clampf(
-		(time - _latest_msec) / (_latest_msec - _previous_msec),
-		0.0, 1.0
-	)
-	#progress = 1.0
+	var sample_interval: float = _latest_msec - _previous_msec
+	var progress: float = 1.0
+	if is_finite(time) and is_finite(sample_interval) and sample_interval > 0.0:
+		progress = clampf(
+			(time - _latest_msec) / sample_interval,
+			0.0, 1.0
+		)
 	
 	var output = {}
 	

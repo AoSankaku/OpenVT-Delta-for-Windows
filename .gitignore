@@ -8,7 +8,21 @@
 bin/*
 license/*.md
 
+# Release files installed into the project directory for local use.
+/openvt.exe
+/openvt.pck
+/OpenVT-Delta-for-Windows.exe
+/OpenVT-Delta-for-Windows.console.exe
+/OpenVT-Delta-for-Windows.pck
+/OpenVTDelta-*.exe
+/OpenVTDelta-*.pck
+/release.json
+/AGENTS.md
+/CorrespondingSource/
+/libayagami_gd.release.x86_64.dll
+/libgd_keylogger.release.x86_64.dll
+/openseeface/
+
 # development project samples
 Live2DModels/
 VrmModels/
-

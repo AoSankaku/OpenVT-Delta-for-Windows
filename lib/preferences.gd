@@ -14,6 +14,7 @@ var active_file: String = DEFAULT_PROFILE_PATH :
 
 var _data = {}
 var _dirty = false
+var is_shutting_down := false
 @export var debug: bool = false
 
 signal profile_changed(profile: String)
@@ -27,6 +28,8 @@ func _enter_tree() -> void:
 				if n.has_method("save_settings"):
 					n.tree_exiting.connect(
 						func ():
+							if is_shutting_down:
+								return # Already captured before the scene starts tearing down.
 							n.save_settings(_data)
 							_dirty = true
 					)
@@ -46,8 +49,15 @@ func _enter_tree() -> void:
 func _notification(what: int) -> void:
 	# preserve last known app state to disk on close just in case
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		save_data()
-		write_data()
+		save_before_shutdown()
+
+## Capture once while all model/editor nodes are still available.
+func save_before_shutdown() -> void:
+	if is_shutting_down:
+		return
+	is_shutting_down = true
+	save_data()
+	write_data()
 		
 ## Writes global settings and active profile state to disk
 func write_data(path = active_file):
@@ -60,14 +70,18 @@ func write_data(path = active_file):
 
 ## Used on application load.  Loads global settings and restores last used profile
 func restore_app():
-	var state = Files.read_json(APP_SETTINGS_PATH)
+	var state = {}
+	if FileAccess.file_exists(APP_SETTINGS_PATH):
+		state = Files.read_json(APP_SETTINGS_PATH)
 	
 	var last_profile = state.get("profile", DEFAULT_PROFILE_PATH)
 	change_profile(last_profile)
 
 ## loads data from a file and stores it in current app state
 func load_data(path: String = active_file):
-	var preferences = Files.read_json(path)
+	var preferences = {}
+	if FileAccess.file_exists(path):
+		preferences = Files.read_json(path)
 	
 	_data = preferences
 

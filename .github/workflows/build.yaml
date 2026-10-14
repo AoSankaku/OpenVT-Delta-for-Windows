@@ -1,156 +1,111 @@
-name: Build Project
+name: Build Windows distribution
 on:
-  push:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 env:
-  project: openvt
+  project: openvt-delta
   
 jobs:
-  fetch-godot:
-    name: Fetch ayagami patched godot engine
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get cached Godot
-        id: cache
-        uses: actions/cache@v6
-        with:
-          key: godot
-          path: ./bin/godot
-      - uses: dsaltares/fetch-gh-release-asset@master
-        with:
-          repo: 'AyagamiDev/ayagami-gd'
-          version: 'tags/godot'
-          regex: true
-          file: 'godot.*'
-          target: 'bin/godot/'
-      - name: Extract artifacts
-        working-directory: bin/godot
-        run: |
-          touch _sc_
-          mkdir -p editor_data/export_templates/4.7.1.stable
-          for artifact in *.editor.*; do
-            chmod +x $artifact
-          done
-
-          mv godot.linuxbsd.template_release.x86_64 editor_data/export_templates/4.7.1.stable/linux_release.x86_64
-
-  build-dependencies:
-    name: Builds extensions for ${{ matrix.platform }}
-    runs-on: ${{ matrix.runner }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          #- runner: windows-latest
-          #  platform: windows
-          - runner: ubuntu-latest
-            platform: linux
-    outputs:
-      cache-key: ${{ steps.cache-key.outputs.key }}
+  windows:
+    name: Build Windows x64
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
     steps:
       - uses: actions/checkout@v6
         with:
           submodules: recursive
       - name: Setup Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1.17.0
-      - name: Compute Cache Key
-        id: cache-key
-        run: |
-          submodules= 
-          for module in $(git config --file .gitmodules --get-regexp path | awk '{ print $2 }'); do
-            submodules+="$(git rev-parse HEAD:$module)"
-          done
-          echo "submodules: $submodules"
-          hash=$(cksum <<< $submodules | cut -f 1 -d ' ')
-          echo "hash: $hash"
-          echo "key=addons_$hash" >> "$GITHUB_OUTPUT"
-      - name: Prepare Addon Caches
-        id: cache
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+      - name: Setup SCons
+        run: python -m pip install scons==4.10.1
+      - name: Cache patched Windows engine
+        id: engine-cache
         uses: actions/cache@v6
         with:
-          key: ${{ steps.cache-key.outputs.key }}_${{ matrix.platform }}
-          path: ./addons
-          enableCrossOsArchive: true
-      - name: Fetch Linux dependencies
-        if: matrix.platform == 'linux' && steps.cache.outputs.cache-hit != 'true'
+          key: godot-windows-4.7.1-${{ hashFiles('thirdparty/ayagami/patches/*', 'build_godot_windows.ps1') }}
+          path: bin/godot
+      - name: Build patched editor and release template
+        if: steps.engine-cache.outputs.cache-hit != 'true'
+        run: ./build_godot_windows.ps1
+      - name: Resolve pinned dependency revisions
+        id: dependency-revisions
         run: |
-          sudo apt update
-          sudo apt install -y libudev-dev libinput-dev
-      - name: Build Addons
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: ./build_dependencies.sh
-      - name: List Files
-        run: find addons/
-  
-  release:
-    name: Builds executable for ${{ matrix.platform }}
-    runs-on: ubuntu-latest
-    needs: [fetch-godot, build-dependencies]
-    defaults:
-      run:
-        # Use bash shells on all platforms.
-        shell: bash
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          # - identifier: windows-release
-          #   name: Windows Release
-          #   target: template_release
-          #   platform: windows
-          #   arch: x86_64
-          #   output_name: openvt.exe
-          - identifier: linux-release
-            name: Linux Release
-            target: template_release
-            platform: linux
-            arch: x86_64
-            output_name: openvt.x86_64
-    steps:
-      - name: Checkout OpenVT
-        uses: actions/checkout@v6
-      - name: Load Addon Caches
+          $revisions = @('ayagami', 'godot-keylogger', 'godot-vrm') | ForEach-Object { git rev-parse "HEAD:thirdparty/$_" }
+          "key=$($revisions -join '-')" >> $env:GITHUB_OUTPUT
+          "rust=$((& rustc --version).Replace(' ', '-'))" >> $env:GITHUB_OUTPUT
+      - name: Cache Windows addons
         id: addon-cache
-        uses: actions/cache/restore@v6
+        uses: actions/cache@v6
         with:
-          key: ${{ needs.build-dependencies.outputs.cache-key }}_${{ matrix.platform }}
-          path: ./addons
-          enableCrossOsArchive: true
-      - name: Load Godot Caches
-        id: godot-cache
-        uses: actions/cache/restore@v6
+          key: addons-windows-${{ steps.dependency-revisions.outputs.key }}-${{ steps.dependency-revisions.outputs.rust }}-${{ hashFiles('build_dependencies.ps1', 'patches/keylogger-windows.patch') }}
+          path: |
+            addons
+            license/*.md
+      - name: Build Windows dependencies
+        if: steps.addon-cache.outputs.cache-hit != 'true'
+        run: ./build_dependencies.ps1
+      - name: Cache pinned OpenSeeFace archives
+        uses: actions/cache@v6
         with:
-          key: godot
-          path: ./bin/godot
-          enableCrossOsArchive: true
-      - name: Generate Release
+          key: openseeface-windows-${{ hashFiles('thirdparty/openseeface.json') }}
+          path: bin/downloads
+      - name: Export Windows release
+        run: ./build_windows.ps1 -SkipDependencies
+      - name: Verify Windows project
         run: |
-          mkdir -p bin/${{ matrix.platform }}
-          GODOT_BIN=$(find bin -iname '*${{matrix.platform}}*editor*')
-          $GODOT_BIN --headless --export-release "${{ matrix.platform }}" "bin/${{ matrix.platform }}/${{ matrix.output_name }}"
-      - name: Copy extra resources
+          & ./bin/godot/godot.windows.editor.x86_64.console.exe --headless --path . --script tests/windows_smoke.gd --log-file "$PWD/bin/windows-project-smoke.log"
+          if ($LASTEXITCODE -ne 0) { throw 'Windows project smoke test failed.' }
+          if (Select-String -Path bin/windows-project-smoke.log -Pattern 'SCRIPT ERROR:|ERROR:' -Quiet) {
+            Get-Content bin/windows-project-smoke.log -Tail 60
+            throw 'Windows project smoke test reported errors.'
+          }
+      - name: Verify popout controls
         run: |
-          mkdir "bin/${{ matrix.platform }}/branding"
-          find branding/ ! -name "*.import" -type f -print0 | xargs -0 cp -t "bin/${{ matrix.platform }}/branding"
-          mkdir "bin/${{ matrix.platform }}/license"
-          find license/ ! -name "*.import" -type f -print0 | xargs -0 cp -t "bin/${{ matrix.platform }}/license"
-          cp LICENSE.txt README.md "bin/${{ matrix.platform }}"
-      - name: Verify Output
+          & ./bin/godot/godot.windows.editor.x86_64.console.exe --headless --path . --script tests/popout_panel_test.gd --log-file "$PWD/bin/popout-test.log"
+          if ($LASTEXITCODE -ne 0) { throw 'Popout controls test failed.' }
+          if (Select-String -Path bin/popout-test.log -Pattern 'SCRIPT ERROR:|ERROR:' -Quiet) {
+            Get-Content bin/popout-test.log -Tail 60
+            throw 'Popout controls test reported errors.'
+          }
+      - name: Verify OpenSeeFace lifecycle
         run: |
-          find bin/${{ matrix.platform }} -type f
-      - name: Save artifact
+          & ./bin/godot/godot.windows.editor.x86_64.console.exe --headless --path . --script tests/openseeface_test.gd --log-file "$PWD/bin/openseeface-test.log"
+          if ($LASTEXITCODE -ne 0) { throw 'OpenSeeFace lifecycle test failed.' }
+          if (Select-String -Path bin/openseeface-test.log -Pattern 'SCRIPT ERROR:|ERROR:' -Quiet) {
+            Get-Content bin/openseeface-test.log -Tail 60
+            throw 'OpenSeeFace lifecycle test reported errors.'
+          }
+      - name: Verify Live2D metadata
+        run: |
+          & ./bin/godot/godot.windows.editor.x86_64.console.exe --headless --path . --script tests/live2d_metadata_test.gd --log-file "$PWD/bin/live2d-metadata-test.log"
+          if ($LASTEXITCODE -ne 0) { throw 'Live2D metadata test failed.' }
+          if (Select-String -Path bin/live2d-metadata-test.log -Pattern 'SCRIPT ERROR:|ERROR:' -Quiet) {
+            Get-Content bin/live2d-metadata-test.log -Tail 60
+            throw 'Live2D metadata test reported errors.'
+          }
+      - name: Verify Windows release startup
+        run: |
+          $logPath = "$PWD/bin/windows-smoke.log"
+          $release = Get-Content bin/windows/release.json -Raw | ConvertFrom-Json
+          $process = Start-Process -FilePath (Join-Path "$PWD/bin/windows" $release.executable) -WorkingDirectory "$PWD/bin/windows" -ArgumentList @('--headless', '--quit-after', '90', '--log-file', ('"' + $logPath + '"')) -WindowStyle Hidden -PassThru -Wait
+          if ($process.ExitCode -ne 0) { throw 'Windows release startup failed.' }
+          if (Select-String -Path bin/windows-smoke.log -Pattern 'SCRIPT ERROR:|ERROR:' -Quiet) {
+            Get-Content bin/windows-smoke.log -Tail 60
+            throw 'Windows release reported errors.'
+          }
+      - name: Verify and package Windows distribution
+        run: ./package_windows.ps1
+      - name: Save Windows artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.project }}.${{ matrix.platform }}
-          path: ./bin/${{ matrix.platform }}/*
-      - name: Upload to Itchio (Stable)
-        if: startsWith(github.event.ref, 'refs/tags/v')
-        uses: yeslayla/butler-publish-itchio-action@v1.2.0
-        env:
-          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-          CHANNEL: ${{ matrix.platform }}-stable
-          ITCH_GAME: ${{ env.project }}
-          ITCH_USER: ${{ secrets.BUTLER_USER }}
-          PACKAGE: bin/${{matrix.platform}}
-          VERSION: ${{ github.ref_name }}
+          name: ${{ env.project }}.windows
+          path: bin/OpenVT-Delta-for-Windows-x64.zip

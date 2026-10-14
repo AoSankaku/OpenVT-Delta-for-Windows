@@ -2,6 +2,9 @@ extends "./blueprint_loader.gd"
 
 const Serializers = preload("res://lib/utils/serializers.gd")
 
+const PLACEHOLDER_GRAPH_KEYS := ["bindings", "enabled", "name", "nodes"]
+const PLACEHOLDER_NODE_KEYS := ["id", "parameters", "position", "type"]
+
 func id() -> StringName:
 	return "ovt"
 	
@@ -12,28 +15,98 @@ func load_graph(model: VtModel, path: String = model.modelmeta.openvt_parameters
 		
 	var valid_graphs = []
 	if "graphs" in data: # model data may hold multiple graphs
-		var graphs = data.get("graphs")
+		var graphs: Variant = data.get("graphs")
+		if not graphs is Dictionary:
+			return []
+		var migrate_vts_placeholder := _is_safe_vts_placeholder_map(graphs)
 		for profile in graphs:
+			if migrate_vts_placeholder and profile in ["VTS_Parameters", "VTS_Hotkeys"]:
+				continue
 			var graph: Blueprint = BlueprintTemplate.instantiate()
 			graph.name = profile
 			add_child(graph)
-			_deserialize(graph, model, graphs[profile])
+			await _deserialize(graph, model, graphs[profile])
 			if graph.get_child_count() > 0:
 				valid_graphs.append(graph)
 			remove_child(graph)
+			if graph.get_child_count() == 0:
+				graph.queue_free()
 	else: # assume the file itself is a single blueprint
 		var graph: Blueprint = BlueprintTemplate.instantiate()
 		graph.name = data.get("name", "Blueprint")
 		add_child(graph)
-		_deserialize(graph, model, data)
+		await _deserialize(graph, model, data)
 		if graph.get_child_count() > 0:
 			valid_graphs.append(graph)
 		remove_child(graph)
+		if graph.get_child_count() == 0:
+			graph.queue_free()
 		
 	return valid_graphs
 
+func _is_safe_vts_placeholder_map(graphs: Dictionary) -> bool:
+	if graphs.size() == 1:
+		if not graphs.has("VTS_Parameters"):
+			return false
+	elif graphs.size() == 2:
+		if not graphs.has("VTS_Parameters") or not graphs.has("VTS_Hotkeys"):
+			return false
+		if not _is_safe_empty_vts_hotkeys(graphs["VTS_Hotkeys"]):
+			return false
+	else:
+		return false
+	return _is_safe_vts_parameter_placeholder(graphs["VTS_Parameters"])
+
+func _is_safe_empty_vts_hotkeys(data: Variant) -> bool:
+	return data is Dictionary \
+		and _has_exact_keys(data, PLACEHOLDER_GRAPH_KEYS) \
+		and data.get("name") == "VTS_Hotkeys" \
+		and data.get("enabled") == true \
+		and data.get("bindings") is Array \
+		and data.bindings.is_empty() \
+		and data.get("nodes") is Array \
+		and data.nodes.is_empty()
+
+func _is_safe_vts_parameter_placeholder(data: Variant) -> bool:
+	if not data is Dictionary:
+		return false
+	if not _has_exact_keys(data, PLACEHOLDER_GRAPH_KEYS):
+		return false
+	if data.get("name") != "VTS_Parameters" or data.get("enabled") != true:
+		return false
+	if not data.get("bindings") is Array or not data.bindings.is_empty():
+		return false
+	var nodes: Variant = data.get("nodes")
+	if not nodes is Array or nodes.size() != 1:
+		return false
+	var node: Variant = nodes[0]
+	if not node is Dictionary or not _has_exact_keys(node, PLACEHOLDER_NODE_KEYS):
+		return false
+	if node.get("type") != "model_output" or not node.get("id") is String or node.id.is_empty():
+		return false
+	if not node.get("parameters") is Dictionary or not node.parameters.is_empty():
+		return false
+	var position: Variant = node.get("position")
+	if not position is Dictionary or not _has_exact_keys(position, ["x", "y"]):
+		return false
+	for axis in ["x", "y"]:
+		if typeof(position[axis]) != TYPE_INT and typeof(position[axis]) != TYPE_FLOAT:
+			return false
+		if not is_finite(float(position[axis])):
+			return false
+	return true
+
+func _has_exact_keys(value: Dictionary, expected: Array) -> bool:
+	if value.size() != expected.size():
+		return false
+	for key in expected:
+		if not value.has(key):
+			return false
+	return true
+
 func _deserialize(graph: Blueprint, model: VtModel, data: Dictionary):
-	graph.process_mode = PROCESS_MODE_INHERIT if data.get("enabled", true) else PROCESS_MODE_DISABLED
+	graph.enabled = data.get("enabled", true)
+	graph.process_mode = PROCESS_MODE_INHERIT if graph.enabled else PROCESS_MODE_DISABLED
 	
 	for i in data.get("nodes", []):
 		var id = i.get("id", "")
@@ -77,7 +150,7 @@ func _deserialize(graph: Blueprint, model: VtModel, data: Dictionary):
 			if src_port == -1:
 				push_error("invalid slot in graph connection (node: {0}, src: {1})".format([from_node.name, src_slot]))
 				continue
-			if src_port == -1:
+			if dst_port == -1:
 				push_error("invalid slot in graph connection (node: {0}, dst: {1})".format([to_node.name, dst_slot]))
 				continue
 			graph._on_connection_request.call_deferred(

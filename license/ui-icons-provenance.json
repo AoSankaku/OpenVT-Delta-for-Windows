@@ -1,0 +1,273 @@
+{
+  "component": "Font Awesome Free SVG icons",
+  "version": "6.7.2",
+  "author": "Fonticons, Inc.",
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "original_license": "license/LICENSE.fontawesome.txt",
+  "icons": [
+    {
+      "path": "studio/hud/person.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/person.svg",
+      "source_sha256": "eacda0fe744623ef7e7dd60173f079755419b1fac38c79bc26fb9b8a491ea3c1",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "studio/hud/camera_panel/camera-web.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/camera.svg",
+      "source_sha256": "d377d342c7ead4d72ceeaaa921037db04e742f55799b20d66b24d81aefc7fbce",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "studio/hud/item_panel/animated_image.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/film.svg",
+      "source_sha256": "5adf858a1af61ec8ce1ddf5294cb7228b376eb6f814e981df58889c76f74d0db",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "studio/hud/cube.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/cube.svg",
+      "source_sha256": "9998b8bf874139090360f409582549c0ac9288f033139961b6cecb7b1b1c1b62",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "ui/icons/arrows-to-circle.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/arrows-to-circle.svg",
+      "source_sha256": "0a1c6a6a4e1ecf46303b361ceef79080123098a1b31c3ed6e956865aefd3091c",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "ui/icons/arrows-to-dot.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/arrows-to-dot.svg",
+      "source_sha256": "d26b928e0bb766a1beeab06897f8b00180e3bf3218cb49c32895313493f8d3b8",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "ui/icons/eraser.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/eraser.svg",
+      "source_sha256": "14567e4b595e23d1379e577b3b9f7b993099df33a6a868b24c621946e88b7dbf",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "studio/hud/aperture.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/camera.svg",
+      "source_sha256": "d377d342c7ead4d72ceeaaa921037db04e742f55799b20d66b24d81aefc7fbce",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "ui/icons/circle-nodes.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/circle-nodes.svg",
+      "source_sha256": "516823ed1b8221bd8fa1c0802c48c77d7fec15d7a19f5878028d95d5ef2195ae",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "ui/icons/delete-right.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/delete-left.svg",
+      "source_sha256": "38310b4d914e35deb6a93937dc6316a4922a91cd66c56ed160f6bc40751ce997",
+      "modifications": [
+        "white fill",
+        "existing display dimensions",
+        "horizontal mirror"
+      ]
+    },
+    {
+      "path": "ui/icons/circle-chevron-right.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/circle-chevron-right.svg",
+      "source_sha256": "61eade841dff5ee54d56b67f4bb4031359dabff02c52e60c50446cb9fd5470f5",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "studio/hud/item_panel/motion.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/cube.svg",
+      "source_sha256": "9998b8bf874139090360f409582549c0ac9288f033139961b6cecb7b1b1c1b62",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "ui/icons/circle-chevron-left.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/circle-chevron-left.svg",
+      "source_sha256": "6aab2ec82d7fa04197ed942344e556b170955bf5598d977fa9700c091d86a599",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "ui/icons/gear.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/gear.svg",
+      "source_sha256": "b9a38444d7af356e89bb9b2d11852847f969e8b9a45981ca0a1387477247ae81",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "ui/icons/knob.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/circle-dot.svg",
+      "source_sha256": "49e1a0ced15c595d11a52e721a54e4149790a0fc45a0f9f7195b59adaaa97f87",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "lib/blueprints/inputs/eye.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/eye.svg",
+      "source_sha256": "21721fefe69725bb9152552e9da861b7810edd49f6019e4e9f6cf297d515d5e9",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "lib/blueprints/inputs/face-exhaling.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/face-surprise.svg",
+      "source_sha256": "e0543a729f6f49fe402a3b8ef4b854a986fcf77da55d3aaa0a8b59629a21d660",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "lib/blueprints/logic/bezier-curve.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/bezier-curve.svg",
+      "source_sha256": "aaec16b2a6a83025132b0e9ab5071f69d05b97eeff64d8c9eb481a27a1d84a62",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "lib/blueprints/inputs/face-smile-plus.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/face-smile.svg",
+      "source_sha256": "476cd29774a20fc3a674a0b54ecec45c6ad1ded5894fea442d46389afbc3ac93",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "lib/blueprints/inputs/keyboard.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/keyboard.svg",
+      "source_sha256": "2198f537551a8b344739839facc4e8414447b9ff3eb5716d8508a8b6ca8b65e2",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "lib/blueprints/inputs/sidebar-flip.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/table-columns.svg",
+      "source_sha256": "d05ef82e61e258e50bad02e934401a64758462b176934e6166bdf9e245d722ce",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "lib/blueprints/logic/calculator-simple.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/calculator.svg",
+      "source_sha256": "40d7a2599b7a137b9d8f3d685357ac85b11600233a96257bc099c42d00e03680",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "lib/blueprints/outputs/face-laugh-wink.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/face-laugh-wink.svg",
+      "source_sha256": "ff6207af2bdf21298be727797a6a318a27407b960649000ca639e8b4e3c56c12",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "lib/blueprints/outputs/film-simple.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/film.svg",
+      "source_sha256": "5adf858a1af61ec8ce1ddf5294cb7228b376eb6f814e981df58889c76f74d0db",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "lib/blueprints/inputs/face-viewfinder.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/face-smile.svg",
+      "source_sha256": "476cd29774a20fc3a674a0b54ecec45c6ad1ded5894fea442d46389afbc3ac93",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "lib/blueprints/outputs/person-running.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/person-running.svg",
+      "source_sha256": "5b77682c4b460dc5f5f0d7f7d8b837e6fc028b2810afe8efa539ee8329cdbed4",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "ui/icons/thumbtack.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/thumbtack.svg",
+      "source_sha256": "088d40be7f75784a596ad63d78ca5f1d3ae5ea1e866b533320389599de37a7ba",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    },
+    {
+      "path": "ui/icons/square-arrow-up-left.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/up-right-from-square.svg",
+      "source_sha256": "9411df123fc1f257d1d83706c2eeaee284e50cb9d5058dc0b53a7d7d54c36c45",
+      "modifications": [
+        "white fill",
+        "existing display dimensions",
+        "horizontal mirror"
+      ]
+    },
+    {
+      "path": "ui/icons/xmark.svg",
+      "source": "https://github.com/FortAwesome/Font-Awesome/blob/6.7.2/svgs/solid/xmark.svg",
+      "source_sha256": "591fea2ae19d968cac870da11a403068f083a84bb909ee248e11353ed319ec8d",
+      "modifications": [
+        "white fill",
+        "existing display dimensions"
+      ]
+    }
+  ]
+}

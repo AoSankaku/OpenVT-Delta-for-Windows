@@ -1,0 +1,43 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://studio/hud/camera_toggle/camera_toggle.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://studio/hud/camera_panel/camera-web.svg" id="2_camera"]
+
+[node name="CameraToggle" type="PanelContainer" groups=["hide_screenshot"]]
+custom_minimum_size = Vector2(220, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -228.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 88.0
+grow_horizontal = 0
+script = ExtResource("1_script")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Toggle" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+toggle_mode = true
+icon = ExtResource("2_camera")
+text = "カメラ ONにする"
+icon_alignment = 0
+expand_icon = true
+
+[node name="Status" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "停止中"
+horizontal_alignment = 1
+
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Toggle" to="." method="_on_toggle_toggled"]

@@ -47,7 +47,11 @@ func build_slots() -> void:
 	var old_input_mapping: Dictionary[int, String] = {}
 	var old_output_mapping: Dictionary[int, String] = {}
 	if graph:
-		existing_bindings = graph.get_connection_list_from_node(self.name)
+		# A newly added or hidden GraphNode may not have an adjacency cache yet.
+		existing_bindings = graph.get_connection_list().filter(
+			func (binding):
+				return binding.from_node == self.name or binding.to_node == self.name
+		)
 		
 		# determine existing named bindings based on current port positions
 		for e in existing_bindings:

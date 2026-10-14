@@ -1,0 +1,479 @@
+diff --git a/src/keylogger.rs b/src/keylogger.rs
+index bd2f2b3..4182e02 100644
+--- a/src/keylogger.rs
++++ b/src/keylogger.rs
+@@ -1,6 +1,6 @@
+-use godot::classes::{
+-    DisplayServer, Input, InputEvent, InputEventKey,
+-};
++use godot::classes::{DisplayServer, Input, InputEvent};
++#[cfg(not(target_os = "windows"))]
++use godot::classes::InputEventKey;
+ use godot::global::{Key as GKey, MouseButton, inverse_lerp};
+ use godot::prelude::*;
+ use std::collections::HashMap;
+@@ -65,16 +65,19 @@ impl INode for GlobalInput {
+             / DisplayServer::singleton().screen_get_size().cast_float();
+     }
+ 
+-    fn input(&mut self, event: Gd<InputEvent>) {
+-        if let Ok(keyevent) = event.clone().try_cast::<InputEventKey>() {
+-            let keycode = keyevent.get_keycode();
+-
+-            if keyevent.is_pressed() {
+-                self.keystate.insert(keycode, true);
+-                self.hold_keystate.insert(keycode, true);
+-            }
+-            if keyevent.is_released() {
+-                self.keystate.insert(keycode, false);
++    fn input(&mut self, _event: Gd<InputEvent>) {
++        #[cfg(not(target_os = "windows"))]
++        {
++            if let Ok(keyevent) = _event.clone().try_cast::<InputEventKey>() {
++                let keycode = keyevent.get_keycode();
++
++                if keyevent.is_pressed() {
++                    self.keystate.insert(keycode, true);
++                    self.hold_keystate.insert(keycode, true);
++                }
++                if keyevent.is_released() {
++                    self.keystate.insert(keycode, false);
++                }
+             }
+         }
+     }
+diff --git a/src/lib.rs b/src/lib.rs
+index 79ef4c4..d3a3e85 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -1,7 +1,7 @@
+ mod keylogger;
+ 
+ #[cfg(target_os = "windows")]
+-mod noop;
++mod windows;
+ 
+ #[cfg(target_os = "macos")]
+ mod noop;
+diff --git a/src/windows.rs b/src/windows.rs
+new file mode 100644
+index 0000000..1114941
+--- /dev/null
++++ b/src/windows.rs
+@@ -0,0 +1,416 @@
++use crate::keylogger::{GlobalInput, KeyloggerExtension};
++use godot::classes::Engine;
++use godot::global::{Key as GKey, MouseButton};
++use godot::init::{ExtensionLibrary, InitStage};
++use godot::obj::{EngineEnum, Singleton};
++use godot::prelude::*;
++use std::collections::HashMap;
++
++const VK_LBUTTON: i32 = 0x01;
++const VK_RBUTTON: i32 = 0x02;
++const VK_MBUTTON: i32 = 0x04;
++const VK_XBUTTON1: i32 = 0x05;
++const VK_XBUTTON2: i32 = 0x06;
++const VK_SHIFT: i32 = 0x10;
++const VK_CONTROL: i32 = 0x11;
++const VK_MENU: i32 = 0x12;
++const MAPVK_VK_TO_VSC: u32 = 0;
++const TO_UNICODE_NO_STATE_CHANGE: u32 = 0x04;
++const SM_XVIRTUALSCREEN: i32 = 76;
++const SM_YVIRTUALSCREEN: i32 = 77;
++const SM_CXVIRTUALSCREEN: i32 = 78;
++const SM_CYVIRTUALSCREEN: i32 = 79;
++
++#[repr(C)]
++#[derive(Default)]
++struct Point {
++    x: i32,
++    y: i32,
++}
++
++#[link(name = "user32")]
++unsafe extern "system" {
++    fn GetAsyncKeyState(v_key: i32) -> i16;
++    fn GetCursorPos(point: *mut Point) -> i32;
++    fn GetSystemMetrics(index: i32) -> i32;
++    fn MapVirtualKeyW(code: u32, map_type: u32) -> u32;
++    fn ToUnicodeEx(
++        virtual_key: u32,
++        scan_code: u32,
++        keyboard_state: *const u8,
++        characters: *mut u16,
++        character_capacity: i32,
++        flags: u32,
++        keyboard_layout: isize,
++    ) -> i32;
++    fn GetKeyboardLayout(thread_id: u32) -> isize;
++}
++
++fn is_down(v_key: i32) -> bool {
++    // GetAsyncKeyState's high bit represents the current down state. Its low
++    // bit is a lossy pressed-since-last-call flag and must not be used here.
++    unsafe { GetAsyncKeyState(v_key) < 0 }
++}
++
++fn fixed_key_for_vk(v_key: i32) -> Option<GKey> {
++    if (0x30..=0x39).contains(&v_key) {
++        return Some(
++            [
++                GKey::KEY_0,
++                GKey::KEY_1,
++                GKey::KEY_2,
++                GKey::KEY_3,
++                GKey::KEY_4,
++                GKey::KEY_5,
++                GKey::KEY_6,
++                GKey::KEY_7,
++                GKey::KEY_8,
++                GKey::KEY_9,
++            ][(v_key - 0x30) as usize],
++        );
++    }
++    if (0x41..=0x5A).contains(&v_key) {
++        return Some(
++            [
++                GKey::A,
++                GKey::B,
++                GKey::C,
++                GKey::D,
++                GKey::E,
++                GKey::F,
++                GKey::G,
++                GKey::H,
++                GKey::I,
++                GKey::J,
++                GKey::K,
++                GKey::L,
++                GKey::M,
++                GKey::N,
++                GKey::O,
++                GKey::P,
++                GKey::Q,
++                GKey::R,
++                GKey::S,
++                GKey::T,
++                GKey::U,
++                GKey::V,
++                GKey::W,
++                GKey::X,
++                GKey::Y,
++                GKey::Z,
++            ][(v_key - 0x41) as usize],
++        );
++    }
++
++    Some(match v_key {
++        0x08 => GKey::BACKSPACE,
++        0x09 => GKey::TAB,
++        0x0D => GKey::ENTER,
++        0x13 => GKey::PAUSE,
++        0x14 => GKey::CAPSLOCK,
++        0x1B => GKey::ESCAPE,
++        0x20 => GKey::SPACE,
++        0x21 => GKey::PAGEUP,
++        0x22 => GKey::PAGEDOWN,
++        0x23 => GKey::END,
++        0x24 => GKey::HOME,
++        0x25 => GKey::LEFT,
++        0x26 => GKey::UP,
++        0x27 => GKey::RIGHT,
++        0x28 => GKey::DOWN,
++        0x2C => GKey::PRINT,
++        0x2D => GKey::INSERT,
++        0x2E => GKey::DELETE,
++        VK_SHIFT => GKey::SHIFT,
++        VK_CONTROL => GKey::CTRL,
++        VK_MENU => GKey::ALT,
++        0x5B | 0x5C => GKey::META,
++        0x5D => GKey::MENU,
++        0x90 => GKey::NUMLOCK,
++        0x91 => GKey::SCROLLLOCK,
++        0x6A => GKey::KP_MULTIPLY,
++        0x6B => GKey::KP_ADD,
++        0x6D => GKey::KP_SUBTRACT,
++        0x6E => GKey::KP_PERIOD,
++        0x6F => GKey::KP_DIVIDE,
++        0x70 => GKey::F1,
++        0x71 => GKey::F2,
++        0x72 => GKey::F3,
++        0x73 => GKey::F4,
++        0x74 => GKey::F5,
++        0x75 => GKey::F6,
++        0x76 => GKey::F7,
++        0x77 => GKey::F8,
++        0x78 => GKey::F9,
++        0x79 => GKey::F10,
++        0x7A => GKey::F11,
++        0x7B => GKey::F12,
++        0x7C => GKey::F13,
++        0x7D => GKey::F14,
++        0x7E => GKey::F15,
++        0x7F => GKey::F16,
++        0x80 => GKey::F17,
++        0x81 => GKey::F18,
++        0x82 => GKey::F19,
++        0x83 => GKey::F20,
++        0x84 => GKey::F21,
++        0x85 => GKey::F22,
++        0x86 => GKey::F23,
++        0x87 => GKey::F24,
++        0xA0 | 0xA1 => GKey::SHIFT,
++        0xA2 | 0xA3 => GKey::CTRL,
++        0xA4 | 0xA5 => GKey::ALT,
++        0xA6 => GKey::BACK,
++        0xA7 => GKey::FORWARD,
++        0xA8 => GKey::REFRESH,
++        0xAE => GKey::VOLUMEDOWN,
++        0xAF => GKey::VOLUMEUP,
++        0xB0 => GKey::MEDIANEXT,
++        0xB1 => GKey::MEDIAPREVIOUS,
++        0xB2 => GKey::MEDIASTOP,
++        0xB3 => GKey::MEDIAPLAY,
++        0xB4 => GKey::LAUNCHMAIL,
++        0xB5 => GKey::LAUNCHMEDIA,
++        0xB6 => GKey::LAUNCH0,
++        0xB7 => GKey::LAUNCH1,
++        0xBA => GKey::SEMICOLON,
++        0xBB => GKey::EQUAL,
++        0xBC => GKey::COMMA,
++        0xBD => GKey::MINUS,
++        0xBE => GKey::PERIOD,
++        0xBF => GKey::SLASH,
++        0xC0 => GKey::QUOTELEFT,
++        0xDB => GKey::BRACKETLEFT,
++        0xDC => GKey::BACKSLASH,
++        0xDD => GKey::BRACKETRIGHT,
++        0xDE => GKey::APOSTROPHE,
++        0xE2 => GKey::BAR,
++        0x60 => GKey::KP_0,
++        0x61 => GKey::KP_1,
++        0x62 => GKey::KP_2,
++        0x63 => GKey::KP_3,
++        0x64 => GKey::KP_4,
++        0x65 => GKey::KP_5,
++        0x66 => GKey::KP_6,
++        0x67 => GKey::KP_7,
++        0x68 => GKey::KP_8,
++        0x69 => GKey::KP_9,
++        _ => return None,
++    })
++}
++
++fn is_oem_virtual_key(v_key: i32) -> bool {
++    (0xB8..=0xE6).contains(&v_key)
++}
++
++fn key_from_ascii(codepoint: u16) -> Option<GKey> {
++    if !(0x20..=0x7E).contains(&codepoint) {
++        return None;
++    }
++    Some(GKey::from_ord(i32::from((codepoint as u8).to_ascii_uppercase())))
++}
++
++fn resolve_key(fallback: GKey, v_key: i32, codepoint: Option<u16>) -> GKey {
++    if is_oem_virtual_key(v_key) {
++        codepoint.and_then(key_from_ascii).unwrap_or(fallback)
++    } else {
++        fallback
++    }
++}
++
++fn key_for_vk(v_key: i32) -> Option<GKey> {
++    let fallback = fixed_key_for_vk(v_key)?;
++    if is_oem_virtual_key(v_key) {
++        let scan_code = unsafe { MapVirtualKeyW(v_key as u32, MAPVK_VK_TO_VSC) };
++        if scan_code != 0 {
++            let keyboard_state = [0u8; 256];
++            let mut characters = [0u16; 256];
++            let translated = unsafe {
++                ToUnicodeEx(
++                    v_key as u32,
++                    scan_code,
++                    keyboard_state.as_ptr(),
++                    characters.as_mut_ptr(),
++                    255,
++                    TO_UNICODE_NO_STATE_CHANGE,
++                    GetKeyboardLayout(0),
++                )
++            };
++            return Some(resolve_key(
++                fallback,
++                v_key,
++                (translated > 0).then(|| characters[0]),
++            ));
++        }
++    }
++    Some(fallback)
++}
++
++#[derive(Default)]
++struct KeySnapshot {
++    previous: HashMap<GKey, bool>,
++    current: HashMap<GKey, bool>,
++    held: HashMap<GKey, bool>,
++}
++
++fn key_snapshot(previous: HashMap<GKey, bool>, current: HashMap<GKey, bool>) -> KeySnapshot {
++    let mut held = HashMap::new();
++    for key in previous.keys().chain(current.keys()) {
++        let was_pressed = previous.get(key).copied().unwrap_or(false);
++        let is_pressed = current.get(key).copied().unwrap_or(false);
++        held.insert(*key, is_pressed && was_pressed);
++    }
++    KeySnapshot {
++        previous,
++        current,
++        held,
++    }
++}
++
++fn mouse_position() -> Option<Vector2> {
++    let mut point = Point::default();
++    if unsafe { GetCursorPos(&mut point) } == 0 {
++        return None;
++    }
++
++    let origin_x = unsafe { GetSystemMetrics(SM_XVIRTUALSCREEN) };
++    let origin_y = unsafe { GetSystemMetrics(SM_YVIRTUALSCREEN) };
++    let width = unsafe { GetSystemMetrics(SM_CXVIRTUALSCREEN) };
++    let height = unsafe { GetSystemMetrics(SM_CYVIRTUALSCREEN) };
++    if width <= 0 || height <= 0 {
++        return None;
++    }
++
++    Some(Vector2 {
++        x: (2.0 * (point.x - origin_x) as f32 / width as f32 - 1.0).clamp(-1.0, 1.0),
++        y: (2.0 * (point.y - origin_y) as f32 / height as f32 - 1.0).clamp(-1.0, 1.0),
++    })
++}
++
++pub(crate) fn poll(input: &mut GlobalInput) {
++    let previous = std::mem::take(&mut input.keystate);
++    let mut current = HashMap::new();
++
++    for v_key in 0x08..=0xFE {
++        if !is_down(v_key) {
++            continue;
++        }
++        if let Some(key) = key_for_vk(v_key) {
++            current.insert(key, true);
++        }
++    }
++
++    let snapshot = key_snapshot(previous, current);
++    input.prev_keystate = snapshot.previous;
++    input.keystate = snapshot.current;
++    input.hold_keystate = snapshot.held;
++
++    input
++        .mousestate
++        .insert(MouseButton::LEFT, is_down(VK_LBUTTON));
++    input
++        .mousestate
++        .insert(MouseButton::RIGHT, is_down(VK_RBUTTON));
++    input
++        .mousestate
++        .insert(MouseButton::MIDDLE, is_down(VK_MBUTTON));
++    input
++        .mousestate
++        .insert(MouseButton::XBUTTON1, is_down(VK_XBUTTON1));
++    input
++        .mousestate
++        .insert(MouseButton::XBUTTON2, is_down(VK_XBUTTON2));
++
++    if let Some(position) = mouse_position() {
++        input.mouseposition = position;
++    }
++    // Win32 does not expose cross-application pen pressure via these polling
++    // APIs, so the public pressure value remains its initialized value of 0.
++}
++
++#[gdextension]
++unsafe impl ExtensionLibrary for KeyloggerExtension {
++    fn on_stage_init(stage: InitStage) {
++        match stage {
++            InitStage::MainLoop => {
++                let mut singleton = GlobalInput::singleton();
++                let mut input = singleton.bind_mut();
++                let mut base = input.base_mut();
++                base.set_process(false);
++                base.set_process_input(false);
++            }
++            _ => {}
++        }
++    }
++
++    fn on_main_loop_frame() {
++        if Engine::singleton().is_editor_hint() {
++            return;
++        }
++
++        let mut singleton = GlobalInput::singleton();
++        let mut input = singleton.bind_mut();
++        poll(&mut input);
++    }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++
++    #[test]
++    fn maps_common_windows_hotkeys_and_function_keys() {
++        assert_eq!(fixed_key_for_vk(VK_SHIFT), Some(GKey::SHIFT));
++        assert_eq!(fixed_key_for_vk(VK_CONTROL), Some(GKey::CTRL));
++        assert_eq!(fixed_key_for_vk(0xB5), Some(GKey::LAUNCHMEDIA));
++        assert_eq!(fixed_key_for_vk(0xB6), Some(GKey::LAUNCH0));
++        assert_eq!(fixed_key_for_vk(0xB7), Some(GKey::LAUNCH1));
++        assert_eq!(fixed_key_for_vk(0x5B), Some(GKey::META));
++        assert_eq!(fixed_key_for_vk(0x70), Some(GKey::F1));
++        assert_eq!(fixed_key_for_vk(0x87), Some(GKey::F24));
++        assert_eq!(fixed_key_for_vk(0x31), Some(GKey::KEY_1));
++        assert_eq!(fixed_key_for_vk(0x41), Some(GKey::A));
++        assert_eq!(fixed_key_for_vk(0xFF), None);
++        assert!(is_oem_virtual_key(0xBA));
++        assert!(!is_oem_virtual_key(0x41));
++        assert_eq!(
++            resolve_key(GKey::BRACKETLEFT, 0xDB, Some('a' as u16)),
++            GKey::A
++        );
++        assert_eq!(
++            resolve_key(GKey::BRACKETLEFT, 0xDB, Some('ü' as u16)),
++            GKey::BRACKETLEFT
++        );
++        assert_eq!(
++            resolve_key(GKey::BRACKETLEFT, 0xDB, None),
++            GKey::BRACKETLEFT
++        );
++        assert_eq!(
++            resolve_key(GKey::KEY_1, 0x31, Some('!' as u16)),
++            GKey::KEY_1
++        );
++    }
++
++    #[test]
++    fn key_snapshot_tracks_press_hold_release_and_repress_edges() {
++        let a = GKey::A;
++        let down = HashMap::from([(a, true)]);
++        let up = HashMap::new();
++
++        let pressed = key_snapshot(up.clone(), down.clone());
++        assert_eq!(pressed.current.get(&a), Some(&true));
++        assert_eq!(pressed.held.get(&a), Some(&false));
++
++        let held = key_snapshot(pressed.current.clone(), down.clone());
++        assert_eq!(held.current.get(&a), Some(&true));
++        assert_eq!(held.held.get(&a), Some(&true));
++
++        let released = key_snapshot(held.current.clone(), up.clone());
++        assert_eq!(released.current.get(&a), None);
++        assert_eq!(released.held.get(&a), Some(&false));
++
++        let repressed = key_snapshot(released.current, down);
++        assert_eq!(repressed.current.get(&a), Some(&true));
++        assert_eq!(repressed.held.get(&a), Some(&false));
++    }
++}

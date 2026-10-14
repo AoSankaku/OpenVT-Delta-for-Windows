@@ -14,14 +14,18 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="open-vt"
+config/name="OpenVT Delta for Windows"
+config/version="0.1.0-preview.1"
+; Keep the existing Windows profile location across the product rename.
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Godot/app_userdata/open-vt"
 run/main_scene="res://studio/studio.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/stretch_mode=0
-boot_splash/image="uid://bcqaflbakxadd"
-config/icon="uid://do3gvkipu7gp4"
+boot_splash/image="res://branding/delta-splash.png"
+config/icon="res://branding/delta-icon.svg"
 boot_splash/minimum_display_time=2000
 boot_splash/image.editor_hint=""
 
@@ -37,7 +41,7 @@ Registry="*res://lib/tracking/parameter_registry.gd"
 ModelManager="*res://lib/model_manager.gd"
 ItemManager="*res://lib/item_manager.gd"
 BlueprintManager="*uid://dridhda34w6dx"
-BlendRegistry="*uid://dmhw76skp73u3"
+BlendRegistry="*res://addons/ayagami/blend_registry.gd"
 WindowManager="*uid://bl4pt68qhf3tn"
 Preferences="*res://lib/preferences.gd"
 

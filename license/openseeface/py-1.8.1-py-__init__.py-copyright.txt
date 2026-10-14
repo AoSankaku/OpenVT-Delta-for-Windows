@@ -1,0 +1,10 @@
+"""
+pylib: rapid testing and development utils
+
+this module uses apipkg.py for lazy-loading sub modules
+and classes.  The initpkg-dictionary  below specifies
+name->value mappings where value can be another namespace
+dictionary or an import path.
+
+(c) Holger Krekel and others, 2004-2014
+"""

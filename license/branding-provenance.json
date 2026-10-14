@@ -1,0 +1,13 @@
+{
+  "godot_logo": {
+    "asset": "branding/godot_logo_large_monochrome_dark.svg",
+    "asset_sha256": "bc50c2c011a9da831bdd51acc0cca929bcb47886a5e1dad5b0b14cfe812022e9",
+    "author": "Andrea Calabró",
+    "copyright": "Copyright (c) 2017 Andrea Calabró",
+    "source": "https://godotengine.org/press/",
+    "original_notice_source": "https://github.com/godotengine/godot/blob/master/misc/logo/LICENSE.txt",
+    "license": "CC-BY-4.0",
+    "license_notice": "license/GODOT_LOGO_LICENSE.txt",
+    "changes": "Monochrome variant; proportional display scaling."
+  }
+}

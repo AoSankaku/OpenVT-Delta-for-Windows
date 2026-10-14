@@ -50,7 +50,7 @@ func _ready():
 			var err = client.put_packet(
 				JSON.stringify({
 					"messageType": "iOSTrackingDataRequest",
-					"sentBy": "OpenVT",
+					"sentBy": "OpenVT Delta for Windows",
 					"sendForSeconds": 10,
 					"ports": [server.port]
 				}).to_ascii_buffer()

@@ -63,6 +63,13 @@ var objects: Array :
 		return canvas.get_children()
 
 func _ready() -> void:
+	if OS.has_feature("linux") and ClassDB.class_exists("VirtualCamera"):
+		var virtual_camera = ClassDB.instantiate("VirtualCamera") as Node
+		if virtual_camera != null:
+			virtual_camera.name = "VirtualCamera"
+			virtual_camera.add_to_group("output:v4l2")
+			capture_viewport.add_child(virtual_camera)
+
 	# allow items to be dropped onto the window to spawn instantly
 	get_window().files_dropped.connect(
 		func (paths):

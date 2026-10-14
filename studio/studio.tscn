@@ -7,7 +7,8 @@
 [ext_resource type="Script" uid="uid://cd7vdcscwlelj" path="res://lib/tracking/gamepad/gamepad_tracker.gd" id="6_efmbb"]
 [ext_resource type="PackedScene" uid="uid://c773w6vc4nnrr" path="res://studio/stage/stage.tscn" id="9_oyfbk"]
 [ext_resource type="PackedScene" uid="uid://cmd2d6iiryvk4" path="res://studio/hud/hud.tscn" id="10_o8nmr"]
-[ext_resource type="Texture2D" uid="uid://bcqaflbakxadd" path="res://branding/splash.png" id="11_jnoo6"]
+[ext_resource type="PackedScene" path="res://studio/hud/camera_toggle/camera_toggle.tscn" id="14_camera_toggle"]
+[ext_resource type="Texture2D" path="res://branding/delta-splash.svg" id="11_jnoo6"]
 [ext_resource type="Texture2D" uid="uid://d4mqdkit20d64" path="res://branding/godot_logo_large_monochrome_dark.svg" id="13_elko7"]
 
 [sub_resource type="Animation" id="Animation_efxa6"]
@@ -86,6 +87,9 @@ follow_viewport_enabled = true
 [node name="HUD" parent="Interface" unique_id=831684815 instance=ExtResource("10_o8nmr")]
 unique_name_in_owner = true
 
+[node name="CameraToggle" parent="Interface" instance=ExtResource("14_camera_toggle")]
+unique_name_in_owner = true
+
 [node name="Splash" type="CanvasLayer" parent="." unique_id=131694603]
 unique_name_in_owner = true
 layer = 100
@@ -116,6 +120,54 @@ grow_vertical = 2
 texture = ExtResource("11_jnoo6")
 expand_mode = 1
 stretch_mode = 3
+
+[node name="ProductName" type="Label" parent="Splash/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = 10.0
+offset_right = 360.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "OpenVT Delta"
+horizontal_alignment = 1
+
+[node name="Platform" type="Label" parent="Splash/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = 78.0
+offset_right = 360.0
+offset_bottom = 124.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "for Windows"
+horizontal_alignment = 1
+
+[node name="UpstreamCredit" type="Label" parent="Splash/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = 156.0
+offset_right = 360.0
+offset_bottom = 186.0
+theme_override_colors/font_color = Color(0.65, 0.71, 0.75, 1)
+theme_override_font_sizes/font_size = 16
+text = "Based on OpenVT by erodozer"
+horizontal_alignment = 1
 
 [node name="Godot Logo" type="TextureRect" parent="Splash/ColorRect" unique_id=513853145]
 self_modulate = Color(1, 1, 1, 0)

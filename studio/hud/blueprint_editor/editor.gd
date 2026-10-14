@@ -71,7 +71,8 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE and is_instance_valid(active_model):
 		# reattach graphs to model before deletion
 		active_model.blueprints = %Profiles.get_children()
-		active_model.save_settings()
+		if not Preferences.is_shutting_down:
+			active_model.save_settings()
 
 func _on_add_hotkey_pressed(node: VtAction, graph: GraphEdit = active_graph, model: VtModel = active_model) -> VtAction:
 	node.model = model

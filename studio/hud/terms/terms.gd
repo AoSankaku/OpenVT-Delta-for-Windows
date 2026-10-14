@@ -3,7 +3,9 @@ extends Popup
 var accepted: String
 
 func _ready() -> void:
-	%RichTextLabel.text = FileAccess.get_file_as_string("res://LICENSE.txt")
+	%RichTextLabel.text = "OpenVT Delta for Windows\n\nAn independent Windows fork of OpenVT by erodozer.\n\n" \
+		+ FileAccess.get_file_as_string("res://LICENSE.txt") \
+		+ "\n\nThird-party licenses and corresponding library source are supplied alongside this application. See DISTRIBUTION.md and the license folder."
 	
 func save_settings(settings: Dictionary):
 	if not accepted.is_empty():

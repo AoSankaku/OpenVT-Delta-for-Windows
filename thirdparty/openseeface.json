@@ -1,0 +1,23 @@
+{
+  "version": "1.20.5",
+  "release_url": "https://github.com/emilianavt/OpenSeeFace/releases/tag/v1.20.5",
+  "archive_url": "https://github.com/emilianavt/OpenSeeFace/releases/download/v1.20.5/OpenSeeFace-v1.20.5.zip",
+  "archive_name": "OpenSeeFace-v1.20.5.zip",
+  "sha256": "c9223f3547dce65b09705bb9ff74439b7d36e1c37bbe9668672711cf5aa31147",
+  "eigen": {
+    "revision": "d10b27fe37736d2944630ecd7557cefa95cf87c9",
+    "upstream_url": "https://gitlab.com/libeigen/eigen/-/tree/d10b27fe37736d2944630ecd7557cefa95cf87c9",
+    "source_url": "https://eigen.googlesource.com/mirror/+archive/d10b27fe37736d2944630ecd7557cefa95cf87c9.tar.gz",
+    "source_archive": "eigen-d10b27fe-source.tar.gz",
+    "source_sha256": "c5f714208b3267076c55f577d25dc04ccbf65b3b1d868f5107eb17670460fb74"
+  },
+  "dshowcapture": {
+    "version": "v20250803",
+    "revision": "b6b35fc5d8fe17c8b1c7029f37a05622d65ee810",
+    "source_url": "https://codeload.github.com/emilianavt/libdshowcapture/zip/b6b35fc5d8fe17c8b1c7029f37a05622d65ee810",
+    "source_archive": "libdshowcapture-b6b35fc5-source.zip",
+    "source_sha256": "249e64d2e3a78b7b50cfc5e7c3f247e3c8b8e7cc6c1c1e7a7942d3e5a8c37009",
+    "x64_sha256": "bfeb7a43602fd75f9809928ea0e3091be71b2071dae3612f31ed481229486b82",
+    "x86_sha256": "10ead4c02a50d0f5bb2d1630cac90cf4a7b4b77a7931c60561e635efa5d020ea"
+  }
+}

@@ -11,6 +11,8 @@ const UI_THEMES: Array[Theme] = [
 
 signal update_bg_color(color: Color)
 
+var _settings_load_generation := 0
+
 func _get_title():
 	return "Settings"
 
@@ -54,9 +56,9 @@ func _ready() -> void:
 		tracking_system.tracker_changed.connect(_on_tracker_system_tracker_changed)
 		tracking_system.parameters_updated.connect(_on_tracker_system_parameters_updated)
 		
-	# conditionally handle virtual webcam controls based on platform availability
-	if OS.has_feature("linux"):
-		var v4l2_stream = get_tree().get_first_node_in_group("output:v4l2")
+	# conditionally handle virtual webcam controls based on backend availability
+	var v4l2_stream = get_tree().get_first_node_in_group("output:v4l2")
+	if v4l2_stream != null:
 		var feeds = v4l2_stream.get_devices()
 		
 		for feed in feeds:
@@ -64,7 +66,6 @@ func _ready() -> void:
 			%VirtualCameraDevice.set_item_metadata(%VirtualCameraDevice.item_count - 1, feed.id)
 		if len(feeds) > 0:
 			%VirtualCameraDevice.select(0)
-		var vp = get_tree().get_first_node_in_group("system:stage").capture_viewport
 	else:
 		%VirtualWebcam.queue_free()
 		
@@ -107,6 +108,10 @@ func _ready() -> void:
 	)
 	
 func _on_tracker_system_tracker_changed(new_tracker: Tracker) -> void:
+	# An external tracker activation supersedes any profile load still awaiting a frame.
+	_settings_load_generation += 1
+	_sync_tracking_source(new_tracker)
+
 	var config = Control.new()
 	if new_tracker != null:
 		config = new_tracker.create_config()
@@ -118,6 +123,15 @@ func _on_tracker_system_tracker_changed(new_tracker: Tracker) -> void:
 		prev_config.queue_free()
 	
 	%FaceTracking.add_child(config)
+
+func _sync_tracking_source(tracker: Tracker) -> void:
+	if not is_node_ready():
+		return
+	var selected_script = tracker.get_script() if tracker != null else null
+	for index in range(%TrackingSource.item_count):
+		if %TrackingSource.get_item_metadata(index) == selected_script:
+			%TrackingSource.select(index)
+			return
 
 func _on_tracker_system_parameters_updated(parameters: Dictionary, _delta) -> void:
 	if !is_node_ready():
@@ -132,6 +146,8 @@ func _on_preview_background_color_color_changed(color: Color) -> void:
 	update_bg_color.emit(color)
 
 func load_settings(data: Dictionary):
+	_settings_load_generation += 1
+	var generation := _settings_load_generation
 	_on_background_color_changed(Collections.path(data, "window.background_color", "000000"))
 	_on_background_file_selected(Collections.path(data, "window.background_image", ""))
 	%BackgroundModeSelector.selected = Collections.path(data, "window.background_mode", 0)
@@ -145,12 +161,21 @@ func load_settings(data: Dictionary):
 	
 	var tracking_system = get_tree().get_first_node_in_group("system:tracking")
 	if tracking_system:
-		var source = Collections.path(data, "trackers.source", 0)
+		var source: Variant = Collections.path(data, "trackers.source", 0)
 		await get_tree().process_frame
+		if generation != _settings_load_generation or not is_inside_tree():
+			return
+		if typeof(source) != TYPE_INT:
+			source = 0
+		if source < 0 or source >= %TrackingSource.item_count:
+			source = 0
 		%TrackingSource.select(source)
-		tracking_system.activate_tracker(
-			%TrackingSource.get_selected_metadata().new()
-		)
+		var selected_script = %TrackingSource.get_selected_metadata()
+		if selected_script == null:
+			return
+		var current_tracker = tracking_system.get_node_or_null("FaceTracker")
+		if current_tracker == null or current_tracker.get_script() != selected_script:
+			tracking_system.activate_tracker(selected_script.new())
 	
 func save_settings(data: Dictionary):
 	var w = data.get("window", {})
@@ -180,10 +205,14 @@ func _on_microphone_toggle_toggled(toggled_on: bool) -> void:
 	tracking_system.get_node("MicrophoneTracker").enabled = toggled_on
 
 func _on_loopback_item_selected(index: int) -> void:
+	if get_tree().get_first_node_in_group("output:v4l2") == null:
+		return
 	_on_v4l2_toggled(%V4L2Toggle.button_pressed)
 
 func _on_v4l2_toggled(toggled_on: bool) -> void:
 	var v4l2_stream = get_tree().get_first_node_in_group("output:v4l2")
+	if v4l2_stream == null:
+		return
 	if toggled_on:
 		var index = %VirtualCameraDevice.selected
 		if index >= 0:

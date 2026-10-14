@@ -70,15 +70,66 @@ text = "OSF Port"
 [node name="Port" type="SpinBox" parent="HBoxContainer2" unique_id=431934722]
 unique_name_in_owner = true
 layout_mode = 2
-min_value = 10000.0
-max_value = 64335.0
+min_value = 1.0
+max_value = 65535.0
+step = 1.0
 value = 11573.0
+rounded = true
 alignment = 2
 
 [node name="AutoConnect" type="CheckButton" parent="." unique_id=718183635]
-visible = false
+unique_name_in_owner = true
 layout_mode = 2
-text = "Auto Connect"
+text = "Start automatically"
+
+[node name="UseBundled" type="CheckButton" parent="." unique_id=2012293731]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "Use bundled OpenSeeFace"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="." unique_id=2012293732]
+layout_mode = 2
+
+[node name="CameraLabel" type="Label" parent="HBoxContainer3" unique_id=2012293733]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Camera index"
+
+[node name="CameraIndex" type="SpinBox" parent="HBoxContainer3" unique_id=2012293734]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 63.0
+step = 1.0
+value = 0.0
+rounded = true
+alignment = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="." unique_id=2012293735]
+layout_mode = 2
+
+[node name="FpsLabel" type="Label" parent="HBoxContainer4" unique_id=2012293736]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Camera FPS"
+
+[node name="Fps" type="SpinBox" parent="HBoxContainer4" unique_id=2012293737]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 120.0
+step = 1.0
+value = 30.0
+rounded = true
+alignment = 2
+
+[node name="Status" type="Label" parent="." unique_id=2012293738]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+autowrap_mode = 2
+text = "Disconnected"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1728590766]
 layout_mode = 2
@@ -96,5 +147,10 @@ size_flags_horizontal = 3
 text = "Disconnect"
 
 [connection signal="toggled" from="BlinkSync" to="." method="_on_blink_sync_toggled"]
+[connection signal="toggled" from="AutoConnect" to="." method="_on_auto_connect_toggled"]
+[connection signal="toggled" from="UseBundled" to="." method="_on_use_bundled_toggled"]
+[connection signal="value_changed" from="HBoxContainer3/CameraIndex" to="." method="_on_camera_index_value_changed"]
+[connection signal="value_changed" from="HBoxContainer2/Port" to="." method="_on_port_value_changed"]
+[connection signal="value_changed" from="HBoxContainer4/Fps" to="." method="_on_fps_value_changed"]
 [connection signal="pressed" from="HBoxContainer/Connect" to="." method="_on_connect_pressed"]
 [connection signal="pressed" from="HBoxContainer/Disconnect" to="." method="_on_disconnect_pressed"]

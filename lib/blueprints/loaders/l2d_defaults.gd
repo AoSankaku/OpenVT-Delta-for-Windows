@@ -116,8 +116,14 @@ const DEFAULT_BINDINGS = {
 	],
 	"MouthOpen": [
 		{
+			"name": "ParamMouthOpenY",
+			"value_range": Vector2(0, 2.1),
+			"clamp_output": true,
+		},
+		{
 			"name": "ParamMouthOpen",
 			"value_range": Vector2(0, 2.1),
+			"clamp_output": true,
 		},
 	],
 	"MouthX": [
@@ -217,7 +223,14 @@ func load_graph(model: VtModel, _path: String = "") -> Array[Blueprint]:
 				continue
 				
 			var output_range = model.get("parameters/%s/range" % output_parameter.name)
-			var map_range = output_parameter.get("value_range", output_range)
+			var requested_range: Vector2 = output_parameter.get("value_range", output_range)
+			var range_min: float = minf(output_range.x, output_range.y)
+			var range_max: float = maxf(output_range.x, output_range.y)
+			var map_range := Vector2(
+				clampf(requested_range.x, range_min, range_max),
+				clampf(requested_range.y, range_min, range_max),
+			)
+			var clamp_output: bool = output_parameter.get("clamp_output", false)
 			
 			if output_parameter.get("smoothing", 0) > 0:
 				var smoothing = graph.spawn_action(&"smoothing", model)
@@ -233,10 +246,11 @@ func load_graph(model: VtModel, _path: String = "") -> Array[Blueprint]:
 				_y = max(smoothing.size.y + 96, _y)
 				
 			if input_range.x != map_range.x or map_range.x != output_range.x or \
-			   input_range.y != map_range.y or map_range.y != output_range.y:
+			   input_range.y != map_range.y or map_range.y != output_range.y or clamp_output:
 				var rangemap = graph.spawn_action(&"rangemap", model, {
 					"a": input_range,
 					"b": map_range,
+					"b_clamp": clamp_output,
 				})
 				graph._on_connection_request(
 					_input.name, _input_slot,

@@ -99,7 +99,10 @@ func _on_connection_request(from_node: StringName, from_port: int, to_node: Stri
 	var s1: int = n1.get_output_slot_by_port(from_port)
 	var s2: int = n2.get_input_slot_by_port(to_port)
 	
-	var slot_type = n2.get_input_type(s1)
+	if s1 < 0 or s2 < 0:
+		return
+
+	var slot_type = n2.get_input_type(s2)
 	# fail to connect
 	if slot_type == -1:
 		return
