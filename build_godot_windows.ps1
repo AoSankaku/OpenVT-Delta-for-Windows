@@ -59,8 +59,7 @@ if ($repoRoot -match '\s') {
     throw 'The Godot SCons ccflags parser cannot safely represent spaces in the repository path; move the checkout to a path without spaces before building the release template.'
 }
 $pathForms = @($repoRoot, $repoRoot.Replace('\', '/')) | Select-Object -Unique
-$pathMapPairs = @($pathForms | ForEach-Object { "$_=C:\OpenVT\source" })
-$pathMapArgument = "/experimental:deterministic /pathmap:$($pathMapPairs -join ',')"
+$pathMapArguments = @('/experimental:deterministic') + @($pathForms | ForEach-Object { "/pathmap:$($_)=C:\OpenVT\source" })
 
 # SCons is pinned in the repository cache so a clean machine need not install it globally.
 $pythonPackages = Join-Path $PSScriptRoot 'bin/tools/python-packages'
@@ -78,7 +77,7 @@ try {
         $arguments = @($pythonPrefixArguments) + @(
             '-m', 'SCons', '-C', $Source, 'platform=windows', "target=$target",
             'arch=x86_64', 'd3d12=no', 'accesskit=no', 'debug_symbols=no',
-            'use_static_cpp=yes', "-j$Jobs", "ccflags=$pathMapArgument"
+            'use_static_cpp=yes', "-j$Jobs", "ccflags=$($pathMapArguments -join ' ')"
         )
         & $pythonExecutable @arguments
         if ($LASTEXITCODE -ne 0) { throw "Godot $target build failed." }
